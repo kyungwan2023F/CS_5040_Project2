@@ -1,5 +1,6 @@
 import student.TestCase;
 
+// Name Jaeyoung Shin
 public class ControllerTest extends TestCase {
     // ~ Fields ................................................................
     private Controller controller;
