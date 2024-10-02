@@ -94,17 +94,26 @@ public class Controller {
         System.out.println("Seminars with costs in range " + low + " to " + high
             + ":");
         int result = costBST.findRange(low, high);
-        
+
         System.out.println(result + " nodes visited in this search");
     }
 
 
     public void searchByDate(String low, String high) {
-
+        System.out.println("Seminars with dates in range " + low + " to " + high
+            + ":");
+        
+        int result = dateBST.findRange(low, high);
+        
+        System.out.println(result + " nodes visited in this search");
     }
 
 
     public BST<Integer, Seminar> getCostTree() {
         return costBST;
+    }
+    
+    public BST<String, Seminar> getDateTree() {
+        return dateBST;
     }
 }

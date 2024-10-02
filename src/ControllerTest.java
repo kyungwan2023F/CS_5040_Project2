@@ -49,7 +49,10 @@ public class ControllerTest extends TestCase {
 
         controller.searchByCost(30, 50);
         controller.searchByCost(50, 100);
+        
+        controller.searchByDate("0", "1");
 
         controller.getCostTree().printTree();
+        controller.getDateTree().printTree();
     }
 }
