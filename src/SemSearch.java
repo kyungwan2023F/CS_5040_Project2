@@ -44,7 +44,5 @@ public class SemSearch {
         String filePath = "solutionTestData/P2_sampleInput.txt";
         commandProcessor.beginParsingByLine(filePath);
         // commandProcessor.beginParsingByLine(args[0]);
-
-
-}
+    }
 }
