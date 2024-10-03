@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+
 public class BST<K extends Comparable<K>, E> {
     // ~ Fields ................................................................
     private BST.BSTNode<K, E> root;
@@ -63,14 +64,14 @@ public class BST<K extends Comparable<K>, E> {
         }
 
         int nodesVisited = 1;
-        
-        if (min.compareTo(root.value().key()) <= 0 && max.compareTo(root.value()
-            .key()) >= 0) {
-            System.out.println(root.value().value().toString());
-        }
 
         if (min.compareTo(root.value().key()) <= 0) {
             nodesVisited += findRangeHelp(root.left, min, max);
+        }
+
+        if (min.compareTo(root.value().key()) <= 0 && max.compareTo(root.value()
+            .key()) >= 0) {
+            System.out.println(root.value().value().toString());
         }
 
         if (max.compareTo(root.value().key()) >= 0) {
@@ -89,7 +90,7 @@ public class BST<K extends Comparable<K>, E> {
 
         int comparison = insertPair.compareTo(root.value());
 
-        if (comparison < 0) {
+        if (comparison <= 0) {
             root.left = insertHelp(root.left, insertPair);
         }
         else {
