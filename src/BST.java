@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 public class BST<K extends Comparable<K>, E> {
     // ~ Fields ................................................................
     private BST.BSTNode<K, E> root;
@@ -72,7 +73,7 @@ public class BST<K extends Comparable<K>, E> {
             nodesVisited += findRangeHelp(root.left, min, max);
         }
 
-        if (max.compareTo(root.value().key()) > 0) {
+        if (max.compareTo(root.value().key()) >= 0) {
             nodesVisited += findRangeHelp(root.right, min, max);
         }
         return nodesVisited;

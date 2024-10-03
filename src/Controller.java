@@ -83,6 +83,12 @@ public class Controller {
     }
 
 
+    public void searchByKeyword(String keyword) {
+        System.out.println("Seminars matching keyword " + keyword + ":");
+        keywordBST.findRange(keyword, keyword);
+    }
+
+
     // ----------------------------------------------------------
     /**
      * Place a description of your method here.
@@ -102,9 +108,9 @@ public class Controller {
     public void searchByDate(String low, String high) {
         System.out.println("Seminars with dates in range " + low + " to " + high
             + ":");
-        
+
         int result = dateBST.findRange(low, high);
-        
+
         System.out.println(result + " nodes visited in this search");
     }
 
@@ -112,8 +118,13 @@ public class Controller {
     public BST<Integer, Seminar> getCostTree() {
         return costBST;
     }
-    
+
+
     public BST<String, Seminar> getDateTree() {
         return dateBST;
+    }
+    
+    public BST<String, Seminar> getKeywordTree() {
+        return keywordBST;
     }
 }
