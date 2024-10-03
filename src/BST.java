@@ -134,7 +134,7 @@ public class BST<K extends Comparable<K>, E> {
     // Public method to print the tree
     public void printTree() {
         if (root == null) {
-            System.out.println("Tree is empty.");
+            System.out.println("This tree is empty");
         }
         else {
             printTreeHelper(root, "", true);

@@ -112,15 +112,19 @@ public class CommandProcessor {
                         String printType = scancmd.next().trim();
                         switch (printType) {
                             case "ID":
+                                System.out.println("ID Tree:");
                                 controller.getIdTree().printTree();
                                 break;
                             case "keyword":
+                                System.out.println("Keyword Tree:");
                                 controller.getKeywordTree().printTree();
                                 break;
                             case "cost":
+                                System.out.println("Cost Tree:");
                                 controller.getCostTree().printTree();
                                 break;
                             case "date":
+                                System.out.println("Date Tree:");
                                 controller.getDateTree().printTree();
                                 break;
                             case "location":
