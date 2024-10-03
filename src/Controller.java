@@ -86,6 +86,7 @@ public class Controller {
     // ----------------------------------------------------------
     /**
      * Place a description of your method here.
+     * 
      * @param keyword
      */
     public void searchByKeyword(String keyword) {
@@ -113,6 +114,7 @@ public class Controller {
     // ----------------------------------------------------------
     /**
      * Place a description of your method here.
+     * 
      * @param low
      * @param high
      */
@@ -129,6 +131,19 @@ public class Controller {
     // ----------------------------------------------------------
     /**
      * Place a description of your method here.
+     * @param x
+     * @param y
+     * @param radius
+     */
+    public void searchByLocation(short x, short y, int radius) {
+        return;
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Place a description of your method here.
+     * 
      * @return
      */
     public BST<Integer, Seminar> getCostTree() {
@@ -139,18 +154,22 @@ public class Controller {
     // ----------------------------------------------------------
     /**
      * Place a description of your method here.
+     * 
      * @return
      */
     public BST<String, Seminar> getDateTree() {
         return dateBST;
     }
-    
+
+
     // ----------------------------------------------------------
     /**
      * Place a description of your method here.
+     * 
      * @return
      */
     public BST<String, Seminar> getKeywordTree() {
         return keywordBST;
     }
+
 }
