@@ -83,6 +83,11 @@ public class Controller {
     }
 
 
+    // ----------------------------------------------------------
+    /**
+     * Place a description of your method here.
+     * @param keyword
+     */
     public void searchByKeyword(String keyword) {
         System.out.println("Seminars matching keyword " + keyword + ":");
         keywordBST.findRange(keyword, keyword);
@@ -105,6 +110,12 @@ public class Controller {
     }
 
 
+    // ----------------------------------------------------------
+    /**
+     * Place a description of your method here.
+     * @param low
+     * @param high
+     */
     public void searchByDate(String low, String high) {
         System.out.println("Seminars with dates in range " + low + " to " + high
             + ":");
@@ -115,15 +126,30 @@ public class Controller {
     }
 
 
+    // ----------------------------------------------------------
+    /**
+     * Place a description of your method here.
+     * @return
+     */
     public BST<Integer, Seminar> getCostTree() {
         return costBST;
     }
 
 
+    // ----------------------------------------------------------
+    /**
+     * Place a description of your method here.
+     * @return
+     */
     public BST<String, Seminar> getDateTree() {
         return dateBST;
     }
     
+    // ----------------------------------------------------------
+    /**
+     * Place a description of your method here.
+     * @return
+     */
     public BST<String, Seminar> getKeywordTree() {
         return keywordBST;
     }
