@@ -69,6 +69,11 @@ public class Controller {
     }
 
 
+    // ----------------------------------------------------------
+    /**
+     * Place a description of your method here.
+     * @param id
+     */
     public void searchById(int id) {
         KVPair<Integer, Seminar> result = idBST.find(id);
         if (result != null) {
@@ -170,6 +175,15 @@ public class Controller {
      */
     public BST<String, Seminar> getKeywordTree() {
         return keywordBST;
+    }
+    
+    // ----------------------------------------------------------
+    /**
+     * Place a description of your method here.
+     * @return
+     */
+    public BST<Integer, Seminar> getIdTree() {
+        return idBST;
     }
 
 }
