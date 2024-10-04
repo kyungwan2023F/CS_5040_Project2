@@ -12,14 +12,14 @@ public class SeminarTest extends TestCase {
      * Sets up the tests that follow. In general, used for initialization
      */
     public void setUp() {
-        // Nothing Here
+        
     }
 
 
     /**
      * Check the toString method
      */
-    public void testtoString()
+    public void testToString()
     {
         String[] keywords = {"Good", "Bad", "Ugly"};
         String expected = "ID: 1729, Title: Seminar Title\n"

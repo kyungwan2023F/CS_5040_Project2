@@ -12,7 +12,7 @@ public class ControllerTest extends TestCase {
 
 
     // ~Public Methods ........................................................
-    public void testControllerInsert() {
+    public void testControllerInsertSearch() {
         // keyword array for the first seminar
         String[] keywords1 = { "HCI", "Computer_Science", "VT",
             "Virginia_Tech" };
