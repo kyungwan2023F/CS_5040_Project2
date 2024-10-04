@@ -1,4 +1,5 @@
 import java.io.File;
+
 /**
  * {Project Description Here}
  */
@@ -41,8 +42,8 @@ public class SemSearch {
         Controller controller = new Controller();
         CommandProcessor commandProcessor = new CommandProcessor(controller);
 
-        String filePath = "solutionTestData/P2_sampleInput.txt";
-        commandProcessor.beginParsingByLine(filePath);
-        // commandProcessor.beginParsingByLine(args[0]);
+// String filePath = "solutionTestData/P2_sampleInput.txt";
+// commandProcessor.beginParsingByLine(filePath);
+        commandProcessor.beginParsingByLine(args[1]);
     }
 }
