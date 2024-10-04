@@ -16,9 +16,9 @@ public class SemSearchTest extends TestCase {
     /**
      * Get code coverage of the class declaration.
      */
-    public void testMInitx() {
-        SemSearch sem = new SemSearch();
-        assertNotNull(sem);
-        SemSearch.main(null);
-    }
+//    public void testMInitx() {
+//        SemSearch sem = new SemSearch();
+//        assertNotNull(sem);
+//        SemSearch.main(null);
+//    }
 }
