@@ -72,6 +72,8 @@ public class Controller {
     // ----------------------------------------------------------
     /**
      * Place a description of your method here.
+     * 
+     * 
      * @param id
      */
     public void searchById(int id) {
@@ -135,7 +137,9 @@ public class Controller {
 
     // ----------------------------------------------------------
     /**
-     * Place a description of your method here.
+     * Place a description of your method here 
+     * 
+     * 
      * @param x
      * @param y
      * @param radius
@@ -174,12 +178,15 @@ public class Controller {
      * @return
      */
     public BST<String, Seminar> getKeywordTree() {
-        return keywordBST;
+        return keywordBST;   
     }
-    
+
+
     // ----------------------------------------------------------
     /**
-     * Place a description of your method here.
+     * Place a description of your meth 
+     * d here.
+     * 
      * @return
      */
     public BST<Integer, Seminar> getIdTree() {

@@ -11,6 +11,7 @@ public class KVPair<K extends Comparable<K>, E>
         theVal = v;
     }
 
+
     // ~Public Methods ........................................................
     public int compareTo(KVPair<K, E> it) {
         return theKey.compareTo(it.key());

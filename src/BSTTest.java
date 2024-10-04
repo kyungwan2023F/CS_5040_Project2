@@ -1,8 +1,6 @@
 import student.TestCase;
 
-public class BSTTest
-    extends TestCase
-{
+public class BSTTest extends TestCase {
     // ~ Fields ................................................................
     private BST<Integer, String> bst;
 
@@ -10,6 +8,7 @@ public class BSTTest
     public void setUp() {
         bst = new BST<>();
     }
+
 
     // ~Public Methods ........................................................
     public void testInsertFind() {
@@ -33,7 +32,8 @@ public class BSTTest
         assertNotNull(bst.find(6));
         assertNull(bst.find(10));
     }
-    
+
+
     public void testFindRange() {
         KVPair<Integer, String> testPair1 = new KVPair<>(1, "One");
         KVPair<Integer, String> testPair2 = new KVPair<>(2, "Two");
@@ -47,12 +47,8 @@ public class BSTTest
         bst.insert(testPair4);
         bst.insert(testPair5);
         bst.insert(testPair6);
-        int nodesVisited = bst.findRange(2,4);
+        int nodesVisited = bst.findRange(2, 4);
         assertEquals(9, nodesVisited);
     }
-    
-    
-    
-    
-    
+
 }
