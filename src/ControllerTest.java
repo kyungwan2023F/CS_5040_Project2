@@ -40,6 +40,10 @@ public class ControllerTest extends TestCase {
         controller.insert(3, "Overview of HPC and CSE Research at VT",
             "1203301125", 35, (short)0, (short)0, 25, keywords4,
             "Learn what kind of research is done on HPC and CSE at VT");
+        
+        controller.insert(1, "Overview of HCI Research at VT", "0610051600", 90,
+            (short)10, (short)10, 45, keywords1,
+            "This seminar will present an overview of HCI research at VT");
 
 // controller.searchById(1);
 // controller.searchById(2);
@@ -51,9 +55,13 @@ public class ControllerTest extends TestCase {
         controller.searchByDate("0", "1");
 
         controller.searchByKeyword("VT");
+        
+        controller.searchById(2);
+        controller.searchById(12);
 
         controller.getCostTree().printTree();
         controller.getDateTree().printTree();
         controller.getKeywordTree().printTree();
+        controller.getIdTree().printTree();
     }
 }

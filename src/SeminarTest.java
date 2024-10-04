@@ -36,6 +36,9 @@ public class SeminarTest extends TestCase {
         assertTrue(mysem.cost() == 125);
         assertTrue(mysem.x() == 15);
         assertTrue(mysem.y() == 33);
+        assertTrue(mysem.length() == 75);
+        assertEquals("Seminar Title", mysem.title());
+        assertEquals("This is a great seminar", mysem.description());
         assertTrue(mysem.date().equals("2405231000"));
         String[] tempKeywords = mysem.keywords();
         for (int i = 0; i < keywords.length; i++) {
