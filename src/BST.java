@@ -46,6 +46,10 @@ public class BST<K extends Comparable<K>, E>
 
 
     // ~Public Methods ........................................................
+    public int size() {
+        return nodecount;
+    }
+    
     private KVPair<K, E> findHelp(BSTNode<K, E> root, K key)
     {
         if (root == null)

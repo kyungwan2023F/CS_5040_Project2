@@ -1,21 +1,17 @@
 import student.TestCase;
 
-public class BSTTest
-    extends TestCase
-{
+public class BSTTest extends TestCase {
     // ~ Fields ................................................................
     private BST<Integer, String> bst;
 
     // ~ Constructors ..........................................................
-    public void setUp()
-    {
+    public void setUp() {
         bst = new BST<>();
     }
 
 
     // ~Public Methods ........................................................
-    public void testInsertFind()
-    {
+    public void testInsertFind() {
         KVPair<Integer, String> testPair1 = new KVPair<>(1, "One");
         KVPair<Integer, String> testPair2 = new KVPair<>(2, "Two");
         KVPair<Integer, String> testPair3 = new KVPair<>(3, "Three");
@@ -39,8 +35,7 @@ public class BSTTest
     }
 
 
-    public void testFindRange()
-    {
+    public void testFindRange() {
         KVPair<Integer, String> testPair1 = new KVPair<>(1, "One");
         KVPair<Integer, String> testPair2 = new KVPair<>(2, "Two");
         KVPair<Integer, String> testPair3 = new KVPair<>(3, "Three");
@@ -56,5 +51,22 @@ public class BSTTest
         int nodesVisited = bst.findRange(2, 4);
         assertEquals(9, nodesVisited);
         bst.printTree();
+    }
+
+
+    public void testFindRangeEmptyTree() {
+        int nodesVisited = bst.findRange(2, 4);
+        assertEquals(1, nodesVisited); 
+    }
+    
+    
+    public void testInsertDuplicate() {
+        KVPair<Integer, String> testPair1 = new KVPair<>(3, "Three");
+        KVPair<Integer, String> testPair2 = new KVPair<>(3, "DuplicateThree");
+
+        bst.insert(testPair1);
+        bst.insert(testPair2);
+
+        assertEquals(2, bst.size());
     }
 }
