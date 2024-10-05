@@ -21,7 +21,7 @@ public class KVPairTest
     public void testCompareToKVPair() {
         assertTrue(testKVPair1.compareTo(testKVPair2) < 0);  
         assertTrue(testKVPair2.compareTo(testKVPair1) > 0);  
-        assertTrue(testKVPair3.compareTo(testKVPair1) == 0);  
+        assertEquals(0, testKVPair1.compareTo(testKVPair3));
     }
     
     public void testCompareToKey() {
@@ -29,6 +29,31 @@ public class KVPairTest
         assertTrue(testKVPair2.compareTo(1) > 0);
         assertTrue(testKVPair3.compareTo(1) == 0); 
     }
+    
+    public void testCompareToNullValue() {
+        KVPair<Integer, String> testKVPair4 = new KVPair<>(3, null);
+        KVPair<Integer, String> testKVPair5 = new KVPair<>(3, "Three");
+        assertEquals(0, testKVPair4.compareTo(testKVPair5));
+    }
+    
+    public void testCompareToNullKey() {
+        KVPair<Integer, String> testKVPair6 = new KVPair<>(null, "Null");
+        // Expect NullPointerException when comparing null key
+        Exception exception = null;
+        try {
+            testKVPair6.compareTo(1);
+        } catch (NullPointerException e) {
+            exception = e;
+        }
+        assertNotNull(exception);
+    }
+    
+    public void testNullKVPair() {
+        KVPair<Integer, String> testKVPair7 = new KVPair<>(null, null);
+        assertNull(testKVPair7.key());
+        assertNull(testKVPair7.value());
+    }
+    
     
     public void testKey() {
         assertTrue(testKVPair1.key() == 1);
