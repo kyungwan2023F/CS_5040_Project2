@@ -1,12 +1,19 @@
 import student.TestCase;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 public class BSTTest extends TestCase {
     // ~ Fields ................................................................
     private BST<Integer, String> bst;
+    private ByteArrayOutputStream outContent;
+    private PrintStream originalOut;
 
     // ~ Constructors ..........................................................
     public void setUp() {
         bst = new BST<>();
+        outContent = new ByteArrayOutputStream();
+        originalOut = System.out;
+        System.setOut(new PrintStream(outContent)); 
     }
 
 
@@ -51,6 +58,15 @@ public class BSTTest extends TestCase {
         bst.insert(testPair6);
         int nodesVisited1 = bst.findRange(2, 4);
         assertEquals(9, nodesVisited1);
+        
+        int nodesVisted2 = bst.findRange(1, 5);
+        assertEquals(12, nodesVisted2);
+        
+        int nodesVisted3 = bst.findRange(4, 6);
+        assertEquals(10, nodesVisted3);
+        
+        int nodesVisted4 = bst.findRange(3, 4);
+        assertEquals(8, nodesVisted4);
         
         
         bst.printTree();
@@ -115,7 +131,78 @@ public class BSTTest extends TestCase {
         bst.insert(testPair6);
         int nodesVisited = bst.findRange(10, 15);
         assertEquals(7, nodesVisited);
+        
+        int nodesVisited1 = bst.findRange(-3, -1);
+        assertEquals(7, nodesVisited);
     }
+    
+    public void testPrintNull() {
+        bst.printTree();
+    }
+    
+    public void testFindRangeLeftTraversal() {
+        
+        BST<Integer, String> bst = new BST<>();
+        bst.insert(new KVPair<>(10, "Ten"));
+        bst.insert(new KVPair<>(5, "Five"));
+        bst.insert(new KVPair<>(3, "Three"));  
+        bst.insert(new KVPair<>(7, "Seven"));  
+        bst.insert(new KVPair<>(15, "Fifteen"));
+
+        
+        int nodesVisited = bst.findRange(3, 7);
+        
+        
+        assertEquals(8, nodesVisited);  
+    }
+    
+    public void testFindRangeWithConsoleOutput() {
+        bst.insert(new KVPair<>(10, "Ten"));
+        bst.insert(new KVPair<>(5, "Five"));
+        bst.insert(new KVPair<>(3, "Three"));  
+        bst.insert(new KVPair<>(7, "Seven"));  
+        bst.insert(new KVPair<>(15, "Fifteen"));
+        bst.findRange(3, 10);
+
+        String output = outContent.toString().trim();
+
+        assertTrue(output.contains("Three"));
+        assertTrue(output.contains("Five"));
+        assertTrue(output.contains("Seven"));
+        assertTrue(output.contains("Ten"));
+
+        assertFalse(output.contains("Fifteen"));
+    }
+    
+    public void testPrintTreeEmpty() {
+        BST<Integer, String> emptyBST = new BST<>();
+
+        emptyBST.printTree();
+
+        String output = outContent.toString().trim();
+
+        assertEquals("This tree is empty", output);
+    }
+    
+    public void testPrintTree() {
+        bst.insert(new KVPair<>(10, "Ten"));
+        bst.insert(new KVPair<>(5, "Five"));
+        bst.insert(new KVPair<>(3, "Three"));  
+        bst.insert(new KVPair<>(7, "Seven"));  
+        bst.insert(new KVPair<>(15, "Fifteen"));
+        bst.printTree();
+
+        String output = outContent.toString().trim();
+
+        String expectedOutput ="3\r\n"
+            + "   5\r\n"
+            + "      7\r\n"
+            + "10\r\n"
+            + "   15";   
+
+        assertEquals(expectedOutput, output);
+    }
+
     
     
     

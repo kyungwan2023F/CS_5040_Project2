@@ -1,13 +1,20 @@
 import student.TestCase;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 // Name Jaeyoung Shin
 public class ControllerTest extends TestCase {
     // ~ Fields ................................................................
     private Controller controller;
+    private ByteArrayOutputStream outContent;
+    private PrintStream originalOut;
 
     // ~ Constructors ..........................................................
     public void setUp() {
         controller = new Controller();
+        outContent = new ByteArrayOutputStream();
+        originalOut = System.out;
+        System.setOut(new PrintStream(outContent)); 
     }
 
 
@@ -54,6 +61,9 @@ public class ControllerTest extends TestCase {
         controller.insert(1, "Review of HCI Research at VT", "0610051600", 90,
             (short)10, (short)10, 45, keywords1,
             "This seminar will present an overview of HCI research at VT");
+        
+        String output = outContent.toString().trim();
+        assertTrue(output.contains("Insert FAILED - There is already a record with ID"));
 
 // controller.searchById(1);
 // controller.searchById(2);
