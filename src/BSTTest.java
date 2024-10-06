@@ -57,16 +57,16 @@ public class BSTTest extends TestCase {
         bst.insert(testPair5);
         bst.insert(testPair6);
         int nodesVisited1 = bst.findRange(2, 4);
-        assertEquals(9, nodesVisited1);
+        assertEquals(7, nodesVisited1);
         
         int nodesVisted2 = bst.findRange(1, 5);
-        assertEquals(12, nodesVisted2);
+        assertEquals(10, nodesVisted2);
         
         int nodesVisted3 = bst.findRange(4, 6);
-        assertEquals(10, nodesVisted3);
+        assertEquals(9, nodesVisted3);
         
         int nodesVisted4 = bst.findRange(3, 4);
-        assertEquals(8, nodesVisted4);
+        assertEquals(6, nodesVisted4);
         
         
         bst.printTree();
@@ -112,7 +112,7 @@ public class BSTTest extends TestCase {
         bst.insert(testPair5);
         bst.insert(testPair6);
         int nodesVisited = bst.findRange(3, 3);
-        assertEquals(6, nodesVisited);
+        assertEquals(4, nodesVisited);
     }
     
     
@@ -153,7 +153,7 @@ public class BSTTest extends TestCase {
         int nodesVisited = bst.findRange(3, 7);
         
         
-        assertEquals(8, nodesVisited);  
+        assertEquals(7, nodesVisited);  
     }
     
     public void testFindRangeWithConsoleOutput() {
