@@ -184,24 +184,41 @@ public class BSTTest extends TestCase {
         assertEquals("This tree is empty", output);
     }
     
-//    public void testPrintTree() {
-//        bst.insert(new KVPair<>(10, "Ten"));
-//        bst.insert(new KVPair<>(5, "Five"));
-//        bst.insert(new KVPair<>(3, "Three"));  
-//        bst.insert(new KVPair<>(7, "Seven"));  
-//        bst.insert(new KVPair<>(15, "Fifteen"));
-//        bst.printTree();
-//
-//        String output = outContent.toString().trim();
-//
-//        String expectedOutput ="3\r\n"
-//            + "   5\r\n"
-//            + "      7\r\n"
-//            + "10\r\n"
-//            + "   15";   
-//
-//        assertEquals(expectedOutput, output);
-//    }
+    public void testPrintTree() {
+        bst.insert(new KVPair<>(10, "Ten"));
+        bst.insert(new KVPair<>(5, "Five"));
+        bst.insert(new KVPair<>(3, "Three"));  
+        bst.insert(new KVPair<>(7, "Seven"));  
+        bst.insert(new KVPair<>(15, "Fifteen"));
+        bst.printTree();
+
+        String output = outContent.toString().trim();
+
+        String expectedOutput ="(null)\r\n"
+            + "    \\\r\n"
+            + "    (3)\r\n"
+            + "    /\r\n"
+            + "(null)\r\n"
+            + "        \\\r\n"
+            + "        (5)\r\n"
+            + "        /\r\n"
+            + "(null)\r\n"
+            + "    \\\r\n"
+            + "    (7)\r\n"
+            + "    /\r\n"
+            + "(null)\r\n"
+            + "            \\\r\n"
+            + "            (10)\r\n"
+            + "            /\r\n"
+            + "    (null)\r\n"
+            + "        \\\r\n"
+            + "        (15)\r\n"
+            + "        /\r\n"
+            + "    (null)\r\n"
+            + "Number of records: 5";
+
+        assertEquals(expectedOutput, output);
+    }
     
     public void testGetHeight() {
         bst.insert(new KVPair<>(1, "One"));

@@ -157,25 +157,6 @@ public class BST<K extends Comparable<K>, E> {
         printTreeHelper(node.right, height, level + 1);
     }
 
-// private void printTreeHelper(
-// BSTNode<K, E> node,
-// String indent,
-// int level) {
-// if (node == null) {
-// System.out.println(indent + "(null)");
-// return;
-// }
-//
-// printTreeHelper(node.left, indent + " ", level + 1);
-//
-// String adjustedIndent = " ".repeat(level * 4);
-//
-// System.out.println(adjustedIndent + " \\");
-// System.out.println(adjustedIndent + " (" + node.value().key() + ")");
-// System.out.println(adjustedIndent + " /");
-//
-// printTreeHelper(node.right, indent + " ", level + 1);
-// }
 
 
     public void printTree() {
