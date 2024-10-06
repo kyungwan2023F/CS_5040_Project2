@@ -123,7 +123,7 @@ public class BST<K extends Comparable<K>, E> {
 
     private int getHeight(BSTNode<K, E> node) {
         if (node == null) {
-            return -1;
+            return 0;
         }
         int leftHeight = getHeight(node.left);
         int rightHeight = getHeight(node.right);
@@ -131,30 +131,51 @@ public class BST<K extends Comparable<K>, E> {
     }
 
 
-    private void printTreeHelper(
-        BSTNode<K, E> node,
-        String indent,
-        boolean isRight) {
+    public int getHeight() {
+        return getHeight(root);
+    }
+
+
+    private void printTreeHelper(BSTNode<K, E> node, int height, int level) {
         if (node == null) {
+            int indentSpaces = (height - level) * 4;
+            String indent = " ".repeat(indentSpaces);
             System.out.println(indent + "(null)");
             return;
         }
 
-        printTreeHelper(node.left, indent + "    ", false);
-        
+        printTreeHelper(node.left, height, level + 1);
 
-        if (isRight) {
-            System.out.println(indent + "    \\");  
-            System.out.println(indent + "    (" + node.value().key() + ")");  
-            System.out.println(indent + "    /"); 
-        } else {
-            System.out.println(indent + "    /");  
-            System.out.println(indent + "    (" + node.value().key() + ")");  
-            System.out.println(indent + "    \\");  
-        }
+        int indentSpaces = (height - level) * 4;
+        String indent = " ".repeat(indentSpaces);
 
-        printTreeHelper(node.right, indent + "    ", true);
+        System.out.println(indent + "\\");
+        System.out.println(indent + "(" + node.value().key()
+            + ")");
+        System.out.println(indent + "/");
+
+        printTreeHelper(node.right, height, level + 1);
     }
+
+// private void printTreeHelper(
+// BSTNode<K, E> node,
+// String indent,
+// int level) {
+// if (node == null) {
+// System.out.println(indent + "(null)");
+// return;
+// }
+//
+// printTreeHelper(node.left, indent + " ", level + 1);
+//
+// String adjustedIndent = " ".repeat(level * 4);
+//
+// System.out.println(adjustedIndent + " \\");
+// System.out.println(adjustedIndent + " (" + node.value().key() + ")");
+// System.out.println(adjustedIndent + " /");
+//
+// printTreeHelper(node.right, indent + " ", level + 1);
+// }
 
 
     public void printTree() {
@@ -162,7 +183,9 @@ public class BST<K extends Comparable<K>, E> {
             System.out.println("This tree is empty");
         }
         else {
-            printTreeHelper(root, "", true);
+            int height = getHeight(root);  
+            printTreeHelper(root, height, 0); 
+            System.out.println("Number of records: " + this.size());
         }
     }
 }
