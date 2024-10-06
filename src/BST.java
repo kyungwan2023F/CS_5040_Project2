@@ -79,7 +79,7 @@ public class BST<K extends Comparable<K>, E> {
             System.out.println(root.value().value().toString());
         }
 
-        if (max.compareTo(root.value().key()) >= 0) {
+        if (max.compareTo(root.value().key()) > 0) {
             nodesVisited += findRangeHelp(root.right, min, max);
         }
         return nodesVisited;

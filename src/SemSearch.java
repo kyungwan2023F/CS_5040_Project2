@@ -42,8 +42,8 @@ public class SemSearch {
         Controller controller = new Controller();
         CommandProcessor commandProcessor = new CommandProcessor(controller);
 
-// String filePath = "solutionTestData/P2_sampleInput.txt";
-// commandProcessor.beginParsingByLine(filePath);
-        commandProcessor.beginParsingByLine(args[1]);
+        String filePath = "solutionTestData/P2_sampleInput.txt";
+        commandProcessor.beginParsingByLine(filePath);
+// commandProcessor.beginParsingByLine(args[1]);
     }
 }
