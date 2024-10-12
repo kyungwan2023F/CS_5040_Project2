@@ -228,6 +228,18 @@ public class BSTTest extends TestCase {
         int height = bst.getHeight();
         assertEquals(4, height);
     }
+    
+    public void testDelete() {
+        bst.insert(new KVPair<>(10, "Ten"));
+        bst.insert(new KVPair<>(5, "Five"));
+        bst.insert(new KVPair<>(3, "Three"));  
+        bst.insert(new KVPair<>(7, "Seven"));  
+        bst.insert(new KVPair<>(15, "Fifteen"));
+        
+        bst.remove(new KVPair<>(3, "Three"));
+        assertNull(bst.find(3)); // The node with key 3 should be gone
+        assertEquals(4, bst.size()); // Size should be decremented
+    }
 
     
     

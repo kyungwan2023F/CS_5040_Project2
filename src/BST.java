@@ -147,6 +147,7 @@ public class BST<K extends Comparable<K>, E> {
     }
     
     public BSTNode<K, E> remove(KVPair<K, E> key){
+        nodecount--;
         return removeHelp(root, key);
     }
 
