@@ -2,10 +2,10 @@ import java.util.ArrayList;
 
 public class BST<K extends Comparable<K>, E> {
     // ~ Fields ................................................................
-    private BST.BSTNode<K, E> root;
+    public BST.BSTNode<K, E> root;
     private int nodecount;
 
-    private static class BSTNode<K extends Comparable<K>, E> {
+    static class BSTNode<K extends Comparable<K>, E> {
         KVPair<K, E> data;
         BSTNode<K, E> left, right;
 
@@ -102,6 +102,52 @@ public class BST<K extends Comparable<K>, E> {
             root.right = insertHelp(root.right, insertPair);
         }
         return root;
+    }
+    
+    private BSTNode<K, E> getMax(BSTNode<K, E> root){
+        if (root.right == null) {
+            return root;
+        }
+        return getMax(root.right);
+    }
+    
+    private BSTNode<K, E> deleteMax(BSTNode<K, E> root){
+        if (root.right == null) {
+            return root.left;
+        }
+        root.right = deleteMax(root.right);
+        return root;
+    }
+    
+    private BSTNode<K, E> removeHelp(BSTNode<K, E> root, KVPair<K, E> key){
+        if (root == null) {
+            return null;
+        }
+        int comparison = root.value().compareTo(key);
+        if (comparison > 0) {
+            root.left = removeHelp(root.left, key);
+        }
+        else if (comparison < 0) {
+            root.right = removeHelp(root.right, key);
+        }
+        else if (comparison == 0 && root.data.value().equals(key.value())) {
+            if (root.left == null) {
+                return root.right;
+            }
+            else if (root.right == null) {
+                return root.left;
+            }
+            else {
+                BSTNode<K, E> temp = getMax(root.left);
+                root.data = temp.data;
+                root.left = deleteMax(root.left);
+            }
+        }
+        return root;
+    }
+    
+    public BSTNode<K, E> remove(KVPair<K, E> key){
+        return removeHelp(root, key);
     }
 
 

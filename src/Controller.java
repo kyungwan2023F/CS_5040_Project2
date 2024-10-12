@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.Comparator;
-
 public class Controller {
     // ~ Fields ................................................................
     private BST<Integer, Seminar> idBST;
@@ -137,7 +134,7 @@ public class Controller {
 
     // ----------------------------------------------------------
     /**
-     * Place a description of your method here 
+     * Place a description of your method here
      * 
      * 
      * @param x
@@ -146,6 +143,30 @@ public class Controller {
      */
     public void searchByLocation(short x, short y, int radius) {
         return;
+    }
+
+
+    public void delete(int id) {
+        KVPair<Integer, Seminar> idPair = idBST.find(id);
+        Seminar currentIDSeminar = idPair.value();
+        idBST.root = idBST.remove(idPair);
+
+        KVPair<String, Seminar> datePair = new KVPair<>(currentIDSeminar.date(),
+            currentIDSeminar);
+        dateBST.root = dateBST.remove(datePair);
+
+        KVPair<Integer, Seminar> costPair = new KVPair<>(currentIDSeminar
+            .cost(), currentIDSeminar);
+        costBST.root = costBST.remove(costPair);
+
+        for (String keyword : currentIDSeminar.keywords()) {
+            KVPair<String, Seminar> keywordPair = new KVPair<>(keyword,
+                currentIDSeminar);
+            keywordBST.root = keywordBST.remove(keywordPair);
+        }
+
+        System.out.println("Record with ID " + id
+            + " successfully deleted from the database");
     }
 
 
@@ -178,13 +199,13 @@ public class Controller {
      * @return
      */
     public BST<String, Seminar> getKeywordTree() {
-        return keywordBST;   
+        return keywordBST;
     }
 
 
     // ----------------------------------------------------------
     /**
-     * Place a description of your meth 
+     * Place a description of your meth
      * d here.
      * 
      * @return

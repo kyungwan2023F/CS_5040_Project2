@@ -137,6 +137,10 @@ public class Seminar {
     public String description() {
         return desc;
     }
+    
+    public boolean equals(Seminar otherSeminar) {
+        return this.id == otherSeminar.id;
+    }
 
 
     /**
