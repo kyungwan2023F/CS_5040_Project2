@@ -131,6 +131,7 @@ public class BST<K extends Comparable<K>, E> {
             root.right = removeHelp(root.right, key);
         }
         else if (comparison == 0 && root.data.value().equals(key.value())) {
+            nodecount--;
             if (root.left == null) {
                 return root.right;
             }
@@ -147,7 +148,6 @@ public class BST<K extends Comparable<K>, E> {
     }
     
     public BSTNode<K, E> remove(KVPair<K, E> key){
-        nodecount--;
         return removeHelp(root, key);
     }
 

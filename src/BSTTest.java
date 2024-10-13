@@ -237,8 +237,32 @@ public class BSTTest extends TestCase {
         bst.insert(new KVPair<>(15, "Fifteen"));
         
         bst.remove(new KVPair<>(3, "Three"));
-        assertNull(bst.find(3)); // The node with key 3 should be gone
-        assertEquals(4, bst.size()); // Size should be decremented
+        assertNull(bst.find(3)); 
+        assertEquals(4, bst.size()); 
+    }
+    
+    public void testDeleteRoot() {
+        bst.insert(new KVPair<>(10, "Ten"));
+        bst.insert(new KVPair<>(5, "Five"));
+        bst.insert(new KVPair<>(3, "Three"));  
+        bst.insert(new KVPair<>(7, "Seven"));  
+        bst.insert(new KVPair<>(15, "Fifteen"));
+        
+        bst.remove(new KVPair<>(10, "Ten"));
+        assertNull(bst.find(10)); 
+        assertEquals(4, bst.size()); 
+    }
+    
+    public void testDeleteDifferentValue() {
+        bst.insert(new KVPair<>(10, "Ten"));
+        bst.insert(new KVPair<>(5, "Five"));
+        bst.insert(new KVPair<>(3, "Three"));  
+        bst.insert(new KVPair<>(7, "Seven"));  
+        bst.insert(new KVPair<>(15, "Fifteen"));
+        
+        bst.remove(new KVPair<>(10, "Three"));
+        assertNotNull(bst.find(10));
+        assertEquals(5, bst.size()); 
     }
 
     

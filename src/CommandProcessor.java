@@ -105,9 +105,10 @@ public class CommandProcessor {
                                 break;
                         }
                         break;
-                    case "remove":
+                    case "delete":
+                        id = Integer.parseInt(scancmd.next().trim());
+                        controller.delete(id);
                         break;
-
                     case "print":
                         String printType = scancmd.next().trim();
                         switch (printType) {
