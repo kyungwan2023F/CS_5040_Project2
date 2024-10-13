@@ -151,6 +151,9 @@ public class BST<K extends Comparable<K>, E> {
                     root.left = deleteMax(root.left);
                 }
             }
+            else {
+                root.left = removeHelp(root.left, key);
+            }
         }
         return root;
     }
