@@ -155,20 +155,20 @@ public class Controller {
             return;
         }
         Seminar currentIDSeminar = idPair.value();
-        idBST.root = idBST.remove(idPair);
+        idBST.remove(idPair);
 
         KVPair<String, Seminar> datePair = new KVPair<>(currentIDSeminar.date(),
             currentIDSeminar);
-        dateBST.root = dateBST.remove(datePair);
+        dateBST.remove(datePair);
 
         KVPair<Integer, Seminar> costPair = new KVPair<>(currentIDSeminar
             .cost(), currentIDSeminar);
-        costBST.root = costBST.remove(costPair);
+        costBST.remove(costPair);
 
         for (String keyword : currentIDSeminar.keywords()) {
             KVPair<String, Seminar> keywordPair = new KVPair<>(keyword,
                 currentIDSeminar);
-            keywordBST.root = keywordBST.remove(keywordPair);
+            keywordBST.remove(keywordPair);
         }
 
         System.out.println("Record with ID " + id

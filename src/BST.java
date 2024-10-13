@@ -103,23 +103,26 @@ public class BST<K extends Comparable<K>, E> {
         }
         return root;
     }
-    
-    private BSTNode<K, E> getMax(BSTNode<K, E> root){
+
+
+    private BSTNode<K, E> getMax(BSTNode<K, E> root) {
         if (root.right == null) {
             return root;
         }
         return getMax(root.right);
     }
-    
-    private BSTNode<K, E> deleteMax(BSTNode<K, E> root){
+
+
+    private BSTNode<K, E> deleteMax(BSTNode<K, E> root) {
         if (root.right == null) {
             return root.left;
         }
         root.right = deleteMax(root.right);
         return root;
     }
-    
-    private BSTNode<K, E> removeHelp(BSTNode<K, E> root, KVPair<K, E> key){
+
+
+    private BSTNode<K, E> removeHelp(BSTNode<K, E> root, KVPair<K, E> key) {
         if (root == null) {
             return null;
         }
@@ -130,25 +133,32 @@ public class BST<K extends Comparable<K>, E> {
         else if (comparison < 0) {
             root.right = removeHelp(root.right, key);
         }
-        else if (comparison == 0 && root.data.value().equals(key.value())) {
-            nodecount--;
-            if (root.left == null) {
-                return root.right;
-            }
-            else if (root.right == null) {
-                return root.left;
-            }
-            else {
-                BSTNode<K, E> temp = getMax(root.left);
-                root.data = temp.data;
-                root.left = deleteMax(root.left);
+        else {
+            Seminar rootSeminar = (Seminar)root.data.value();
+            Seminar keySeminar = (Seminar)key.value();
+
+            if (rootSeminar.id() == keySeminar.id()) {
+                nodecount--;
+                if (root.left == null) {
+                    return root.right;
+                }
+                else if (root.right == null) {
+                    return root.left;
+                }
+                else {
+                    BSTNode<K, E> temp = getMax(root.left);
+                    root.data = temp.data;
+                    root.left = deleteMax(root.left);
+                }
             }
         }
         return root;
     }
-    
-    public BSTNode<K, E> remove(KVPair<K, E> key){
-        return removeHelp(root, key);
+
+
+    public void remove(KVPair<K, E> key) {
+        this.root = removeHelp(root, key);
+//        return removeHelp(root, key);
     }
 
 
@@ -197,13 +207,11 @@ public class BST<K extends Comparable<K>, E> {
         String indent = " ".repeat(indentSpaces);
 
         System.out.println(indent + "\\");
-        System.out.println(indent + "(" + node.value().key()
-            + ")");
+        System.out.println(indent + "(" + node.value().key() + ")");
         System.out.println(indent + "/");
 
         printTreeHelper(node.right, height, level + 1);
     }
-
 
 
     public void printTree() {
@@ -211,8 +219,8 @@ public class BST<K extends Comparable<K>, E> {
             System.out.println("This tree is empty");
         }
         else {
-            int height = getHeight(root);  
-            printTreeHelper(root, height, 0); 
+            int height = getHeight(root);
+            printTreeHelper(root, height, 0);
             System.out.println("Number of records: " + this.size());
         }
     }
