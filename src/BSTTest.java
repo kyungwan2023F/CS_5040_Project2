@@ -264,6 +264,11 @@ public class BSTTest extends TestCase {
         assertNotNull(bst.find(10));
         assertEquals(5, bst.size()); 
     }
+    
+    public void testDeleteNullRootBST() {
+        bst.remove(new KVPair<>(10, "Ten"));
+        assertEquals(0, bst.size()); 
+    }
 
     
     

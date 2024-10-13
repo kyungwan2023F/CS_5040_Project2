@@ -148,6 +148,12 @@ public class Controller {
 
     public void delete(int id) {
         KVPair<Integer, Seminar> idPair = idBST.find(id);
+
+        if (idPair == null) {
+            System.out.println("Delete FAILED -- There is no record with ID "
+                + id);
+            return;
+        }
         Seminar currentIDSeminar = idPair.value();
         idBST.root = idBST.remove(idPair);
 

@@ -126,6 +126,7 @@ public class ControllerTest extends TestCase {
         controller.getDateTree().printTree();
         controller.getCostTree().printTree();
         controller.getKeywordTree().printTree();
+        controller.delete(3);
     }
 
 }
