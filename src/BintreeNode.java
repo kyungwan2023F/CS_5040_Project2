@@ -8,16 +8,7 @@
  * @version Oct 13, 2024
  */
 public interface BintreeNode {
-    // ----------------------------------------------------------
-    /**
-     * Place a description of your method here.
-     * 
-     * @return
-     */
-    public boolean isLeaf();
-
-
-
+    
     public BintreeNode insert(
         int x,
         int y,
@@ -29,7 +20,14 @@ public interface BintreeNode {
         int depth);
 
 
-    public void delete(Seminar seminar);
+    public BintreeNode delete(
+        int x,
+        int y,
+        int id,
+        int minx,
+        int miny,
+        int maxx,
+        int maxy, int depth);
 
 
     public int search(
@@ -40,7 +38,8 @@ public interface BintreeNode {
         int height,
         int width,
         int boundHeight,
-        int boundWidth, int depth);
+        int boundWidth,
+        int depth);
 
 
     public void print(int currentLevel, int maxDepth);

@@ -24,6 +24,10 @@ public class BinTree {
     public void insert(int x, int y, Seminar seminar) {
         root = root.insert(x, y, 0, 0, maxX, maxY, seminar, 0);
     }
+    
+    public void delete(int x, int y, int id) {
+        root = root.delete(x, y, id, 0, 0, maxX, maxY, 0);
+    }
 
 
     public BintreeNode getRoot() {

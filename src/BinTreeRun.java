@@ -22,10 +22,11 @@ public class BinTreeRun {
         tree.insert(seminar2.x(), seminar2.y(), seminar2);
         tree.insert(seminar3.x(), seminar3.y(), seminar3);  
         tree.insert(seminar4.x(), seminar4.y(), seminar4);  
-        
-        int nodesVisited = tree.search(10, 10, 20);
-        
-        System.out.println(nodesVisited);
+        tree.print();
+        tree.delete(10, 10, 1);
+        tree.delete(10, 10, 2);
+        tree.search(11, 11, 0);
+        tree.search(10, 10, 20);
         
         tree.print();
     }

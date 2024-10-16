@@ -4,15 +4,18 @@ public class BinTreeEmptyNode implements BintreeNode {
     public BinTreeEmptyNode() {      
     }
 
-    @Override
-    public boolean isLeaf() {
-        return false;
-    }
 
     @Override
-    public void delete(Seminar seminar) {
-        // TODO Auto-generated method stub
-
+    public BintreeNode delete(
+        int x,
+        int y,
+        int id,
+        int minx,
+        int miny,
+        int maxx,
+        int maxy,
+        int depth) {
+            return this;
     }
 
 

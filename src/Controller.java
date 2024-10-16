@@ -180,6 +180,8 @@ public class Controller {
                 currentIDSeminar);
             keywordBST.remove(keywordPair);
         }
+        
+        binTree.delete(idPair.value().x(), idPair.value().y(), id);
 
         System.out.println("Record with ID " + id
             + " successfully deleted from the database");

@@ -8,11 +8,6 @@ public class BintreeLeafNode implements BintreeNode {
 
 
     @Override
-    public boolean isLeaf() {
-        return true;
-    }
-
-    @Override
     public BintreeNode insert(
         int x,
         int y,
@@ -39,9 +34,25 @@ public class BintreeLeafNode implements BintreeNode {
 
 
     @Override
-    public void delete(Seminar seminar) {
-        // TODO Auto-generated method stub
-
+    public BintreeNode delete(
+        int x,
+        int y,
+        int id,
+        int minx,
+        int miny,
+        int maxx,
+        int maxy,
+        int depth) {
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).id() == id) {
+                list.remove(i);
+                break;
+            }
+        }
+        if (list.size() == 0) {
+            return new BinTreeEmptyNode();
+        }
+        return this;
     }
 
 
@@ -93,6 +104,5 @@ public class BintreeLeafNode implements BintreeNode {
         }
         System.out.println(")");
     }
-
 
 }

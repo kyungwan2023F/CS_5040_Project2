@@ -9,11 +9,6 @@ public class BintreeInternalNode implements BintreeNode {
 
 
     @Override
-    public boolean isLeaf() {
-        return false;
-    }
-
-    @Override
     public BintreeNode insert(
         int x,
         int y,
@@ -51,63 +46,57 @@ public class BintreeInternalNode implements BintreeNode {
 
 
     @Override
-    public void delete(Seminar seminar) {
-        // TODO Auto-generated method stub
+    public BintreeNode delete(
+        int x,
+        int y,
+        int id,
+        int minx,
+        int miny,
+        int maxx,
+        int maxy,
+        int depth) {
+        int midX = (minx + maxx) / 2;
+        int midY = (miny + maxy) / 2;
+
+        if (depth % 2 == 0) {
+            if (x < midX) {
+                left = left.delete(x, y, id, minx, miny, midX, maxy, depth + 1);
+            }
+            else {
+                right = right.delete(x, y, id, midX, miny, maxx, maxy, depth
+                    + 1);
+            }
+        }
+        else {
+            if (y < midY) {
+                left = left.delete(x, y, id, minx, miny, maxx, midY, depth + 1);
+            }
+            else {
+                right = right.delete(x, y, id, minx, midY, maxx, maxy, depth
+                    + 1);
+            }
+        }
+
+        if (left instanceof BinTreeEmptyNode
+            && right instanceof BintreeLeafNode) {
+            return right; // Merge up 
+        }
+        else if (right instanceof BinTreeEmptyNode
+            && left instanceof BintreeLeafNode) {
+            return left; // Merge up 
+        }
+
+        // If both children empty, return empty node
+        if (left instanceof BinTreeEmptyNode
+            && right instanceof BinTreeEmptyNode) {
+            return new BinTreeEmptyNode();
+        }
+
+        return this; // Return internal node if no merge happened
 
     }
 
-// @Override
-// public int search(
-// int boundX,
-// int boundY,
-// int minx,
-// int miny,
-// int maxx,
-// int maxy,
-// int boundHeight,
-// int boundWidth) {
-//// (box1TopLeftX <= box2BottomRightX && box1BottomRightX >= box2TopLeftX) &&
-//// (box1TopLeftY <= box2BottomRightY && box1BottomRightY >= box2TopLeftY)
-// int midX = (minx + maxx) / 2;
-// int midY = (miny + maxy) / 2;
-// if (depth % 2 == 0) {
-// if (left instanceof BintreeInternalNode) {
-// int x = minx;
-// int y = miny;
-// int width = midX - x;
-// int height = midY / 2;
-// int internalNodeTopLeftX = x;
-// int internalNodeBottomRightX = x + width;
-// int internalNodeTopLeftY = y + height;
-// int internalNodeBottomRightY = y;
-// if ((internalNodeTopLeftX <= box2BottomRightX
-// && internalNodeBottomRightX >= box2TopLeftX)
-// && (internalNodeTopLeftY <= box2BottomRightY
-// && internalNodeBottomRightY >= box2TopLeftY)) {
-//
-// }
-// left = left.search(boundX, boundY, minX, minY, midX, maxY,
-// boundHeight, boundWidth);
-// }
-// else {
-// right = right.insert(x, y, midX, miny, maxx, maxy, seminar,
-// depth + 1);
-// }
-// }
-// else {
-// if (seminar.y() < midY) {
-// left = left.insert(x, y, minx, miny, maxx, midY, seminar, depth
-// + 1);
-// }
-// else {
-// right = right.insert(x, y, minx, midY, maxx, maxy, seminar,
-// depth + 1);
-// }
-// }
-//
-// }
-
-
+    
     @Override
     public int search(
         int boundX,

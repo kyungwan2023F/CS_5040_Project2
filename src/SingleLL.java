@@ -134,34 +134,49 @@ public class SingleLL {
 
 
     /**
-     * Removes the first instance of the given seminar from the list
+     * Removes the seminar at the given position.
      *
-     * @param seminar
-     *            the seminar to remove
-     * @return true if successful
+     * @param index
+     *            the position of the seminar to remove.
+     * @return true if the removal was successful.
+     * @throws IndexOutOfBoundsException
+     *             if the index is out of bounds.
      */
-    public boolean remove(Seminar seminar) {
-        Node current = head;
+    public boolean remove(int index) {
+        // if the index is invalid or the list is empty
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index is out of bounds");
+        }
 
-        // account for matching head
-        if ((head != null) && (seminar.equals(current.seminar))) {
-            head = head.next;
+        // Case: Removing the head (first node)
+        if (index == 0) {
+            head = head.next(); // Move head to the next node
             size--;
             return true;
         }
 
-        // account for 2+ size
-        while (size() >= 2 && (current.next != null)) {
-            if (seminar.equals(current.next.seminar)) {
-                current.setNext(current.next.next);
-                size--;
-                return true;
-            }
-            current = current.next;
+        // General case: Removing from middle or end of the list
+        Node current = head;
+        Node previous = null;
+        int currentIndex = 0;
+
+        // Traverse to the node just before the one we want to remove
+        while (current != null && currentIndex < index) {
+            previous = current;
+            current = current.next();
+            currentIndex++;
         }
 
-        // this accounts for the isEmpty case or the seminar does not exist
-        return false;
+        // Adjust the next pointer of the previous node to skip the removed node
+        if (previous != null && current != null) {
+            previous.setNext(current.next()); // Bypass the current node
+            size--;
+            return true;
+        }
+
+        // If the node was never found, throw an exception (this should not
+        // occur if index bounds are handled)
+        throw new IndexOutOfBoundsException("Index is out of bounds");
     }
 
 
