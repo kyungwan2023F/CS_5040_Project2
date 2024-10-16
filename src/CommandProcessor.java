@@ -26,9 +26,9 @@ public class CommandProcessor {
                 Scanner scancmd = new Scanner(line);
                 if (!scancmd.hasNext()) {
                     scancmd.close();
-                    continue; 
+                    continue;
                 }
-                
+
                 String cmd = scancmd.next().trim();
 
                 switch (cmd) {
@@ -95,9 +95,12 @@ public class CommandProcessor {
                                     .next().trim());
                                 Short yLocation = Short.parseShort(scancmd
                                     .next().trim());
-                                int radius = Integer.parseInt(scancmd.next()
-                                    .trim());
 
+                                int radius = 0; 
+                                if (scancmd.hasNext()) {
+                                    radius = Integer.parseInt(scancmd.next()
+                                        .trim());
+                                }
                                 controller.searchByLocation(xLocation,
                                     yLocation, radius);
                                 break;
@@ -129,6 +132,7 @@ public class CommandProcessor {
                                 controller.getDateTree().printTree();
                                 break;
                             case "location":
+                                controller.getBinTree().print();
                                 break;
                             default:
                                 break;

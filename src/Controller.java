@@ -4,12 +4,16 @@ public class Controller {
     private BST<String, Seminar> dateBST;
     private BST<Integer, Seminar> costBST;
     private BST<String, Seminar> keywordBST;
+    private BinTree binTree;
+    private int worldSize;
 
-    public Controller() {
+    public Controller(int worldSize) {
+        this.worldSize = worldSize;
         idBST = new BST<>();
         dateBST = new BST<>();
         costBST = new BST<>();
         keywordBST = new BST<>();
+        binTree = new BinTree(worldSize, worldSize);
     }
 
 
@@ -43,7 +47,11 @@ public class Controller {
                 "Insert FAILED - There is already a record with ID " + id);
             return;
         }
-
+        if (x < 0 || y < 0 || x >= worldSize || y >= worldSize) {
+            System.out.println("Insert FAILED - Bad x, y coordinates: " + x
+                + ", " + y);
+            return;
+        }
         Seminar seminar = new Seminar(id, title, date, length, x, y, cost,
             keywords, description);
 
@@ -54,6 +62,7 @@ public class Controller {
         idBST.insert(idPair);
         dateBST.insert(datePair);
         costBST.insert(costPair);
+        binTree.insert(seminar.x(), seminar.y(), seminar);
 
         for (String keyword : keywords) {
             KVPair<String, Seminar> keywordPair = new KVPair<>(keyword,
@@ -142,7 +151,8 @@ public class Controller {
      * @param radius
      */
     public void searchByLocation(short x, short y, int radius) {
-        return;
+        int result = binTree.search(x, y, radius);
+        System.out.println(result + " nodes visited in this search");
     }
 
 
@@ -207,8 +217,7 @@ public class Controller {
     public BST<String, Seminar> getKeywordTree() {
         return keywordBST;
     }
-
-
+    
     // ----------------------------------------------------------
     /**
      * Place a description of your meth
@@ -218,6 +227,10 @@ public class Controller {
      */
     public BST<Integer, Seminar> getIdTree() {
         return idBST;
+    }
+    
+    public BinTree getBinTree() {
+        return binTree;
     }
 
 }

@@ -38,8 +38,10 @@ public class SemSearch {
     public static void main(String[] args) {
         // This is the main file for the program.
         Seminar dum = new Seminar();
+        
+        int worldSize = Integer.parseInt(args[0]);
 
-        Controller controller = new Controller();
+        Controller controller = new Controller(worldSize);
         CommandProcessor commandProcessor = new CommandProcessor(controller);
 
 // String filePath = "solutionTestData/P2_sampleInput.txt";

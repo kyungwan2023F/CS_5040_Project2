@@ -11,7 +11,7 @@ public class ControllerTest extends TestCase {
 
     // ~ Constructors ..........................................................
     public void setUp() {
-        controller = new Controller();
+        controller = new Controller(128);
         outContent = new ByteArrayOutputStream();
         originalOut = System.out;
         System.setOut(new PrintStream(outContent));
