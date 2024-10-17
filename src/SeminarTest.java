@@ -114,4 +114,24 @@ public class SeminarTest extends TestCase {
             "Description: This is a great seminar\n" +
             "Keywords: Good, Bad, Ugly"));
     }
+    
+    
+    public void testEquals() {
+        String[] testKeywords1 = {"AI", "ML", "Data Science"};
+        String[] testKeywords2 = {"Blockchain", "Cryptocurrency"};
+
+        Seminar testSeminar1 = new Seminar(1001, "AI Seminar", "20231001", 90, (short)10, (short)20, 100, testKeywords1, "AI technologies");
+        Seminar testSeminar1Duplicate = new Seminar(1001, "AI Seminar Duplicate", "20231001", 90, (short)10, (short)20, 100, testKeywords1, "AI technologies");
+        Seminar testSeminar2 = new Seminar(1002, "Blockchain Seminar", "20231002", 120, (short)30, (short)40, 150, testKeywords2, "Blockchain basics");
+
+        assertTrue(testSeminar1.equals(testSeminar1Duplicate));
+
+        assertFalse(testSeminar1.equals(testSeminar2));
+
+        assertTrue(testSeminar1.equals(testSeminar1));
+
+        assertFalse(testSeminar1.equals(new Object()));
+    }
+    
+    
 }
