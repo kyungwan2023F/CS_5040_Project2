@@ -2,7 +2,15 @@ import student.TestCase;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-public class BSTTest extends TestCase {
+/**
+ * Test class for BST class.
+ * 
+ * @author Kyungwan Do, Jaeyoung Shin
+ * @version 10/18/2024
+ */
+public class BSTTest
+    extends TestCase
+{
     // ~ Fields ................................................................
     private BST<Integer, String> bst;
     private BST<Integer, Seminar> deletebst;
@@ -10,7 +18,11 @@ public class BSTTest extends TestCase {
     private PrintStream originalOut;
 
     // ~ Constructors ..........................................................
-    public void setUp() {
+    /**
+     * Set up new test object.
+     */
+    public void setUp()
+    {
         bst = new BST<>();
         deletebst = new BST<>();
         outContent = new ByteArrayOutputStream();
@@ -19,8 +31,12 @@ public class BSTTest extends TestCase {
     }
 
 
-    // ~Public Methods ........................................................
-    public void testInsertFind() {
+    // ----------------------------------------------------------
+    /**
+     * Test InsertFind().
+     */
+    public void testInsertFind()
+    {
         assertNull(bst.find(1));
         KVPair<Integer, String> testPair1 = new KVPair<>(1, "One");
         KVPair<Integer, String> testPair2 = new KVPair<>(2, "Two");
@@ -45,7 +61,12 @@ public class BSTTest extends TestCase {
     }
 
 
-    public void testFindRange() {
+    // ----------------------------------------------------------
+    /**
+     * Test FindRange().
+     */
+    public void testFindRange()
+    {
         KVPair<Integer, String> testPair1 = new KVPair<>(1, "One");
         KVPair<Integer, String> testPair2 = new KVPair<>(2, "Two");
         KVPair<Integer, String> testPair3 = new KVPair<>(3, "Three");
@@ -74,13 +95,23 @@ public class BSTTest extends TestCase {
     }
 
 
-    public void testFindRangeEmptyTree() {
+    // ----------------------------------------------------------
+    /**
+     * Test FindRangeEmptyTree().
+     */
+    public void testFindRangeEmptyTree()
+    {
         int nodesVisited = bst.findRange(2, 4);
         assertEquals(1, nodesVisited);
     }
 
 
-    public void testInsertDuplicate() {
+    // ----------------------------------------------------------
+    /**
+     * Test InsertDuplicate().
+     */
+    public void testInsertDuplicate()
+    {
         KVPair<Integer, String> testPair1 = new KVPair<>(3, "Three");
         KVPair<Integer, String> testPair2 = new KVPair<>(3, "DuplicateThree");
 
@@ -91,7 +122,12 @@ public class BSTTest extends TestCase {
     }
 
 
-    public void testInsertNegative() {
+    // ----------------------------------------------------------
+    /**
+     * Test InsertNegative().
+     */
+    public void testInsertNegative()
+    {
         KVPair<Integer, String> testPair1 = new KVPair<>(-2, "NegativeTwo");
         bst.insert(testPair1);
         assertEquals("NegativeTwo", bst.find(-2).value());
@@ -99,7 +135,12 @@ public class BSTTest extends TestCase {
     }
 
 
-    public void testFindRangeSame() {
+    // ----------------------------------------------------------
+    /**
+     * Test FindRangeSame().
+     */
+    public void testFindRangeSame()
+    {
         KVPair<Integer, String> testPair1 = new KVPair<>(1, "One");
         KVPair<Integer, String> testPair2 = new KVPair<>(2, "Two");
         KVPair<Integer, String> testPair3 = new KVPair<>(3, "Three");
@@ -117,7 +158,12 @@ public class BSTTest extends TestCase {
     }
 
 
-    public void testFindRangeOutOfBounds() {
+    // ----------------------------------------------------------
+    /**
+     * Test FindRangeOutOfBounds().
+     */
+    public void testFindRangeOutOfBounds()
+    {
         KVPair<Integer, String> testPair1 = new KVPair<>(1, "One");
         KVPair<Integer, String> testPair2 = new KVPair<>(2, "Two");
         KVPair<Integer, String> testPair3 = new KVPair<>(3, "Three");
@@ -138,12 +184,22 @@ public class BSTTest extends TestCase {
     }
 
 
-    public void testPrintNull() {
+    // ----------------------------------------------------------
+    /**
+     * Test PrintNull().
+     */
+    public void testPrintNull()
+    {
         bst.printTree();
     }
 
 
-    public void testFindRangeLeftTraversal() {
+    // ----------------------------------------------------------
+    /**
+     * Test FindRangeLeftTraversa().
+     */
+    public void testFindRangeLeftTraversal()
+    {
 
         BST<Integer, String> bst = new BST<>();
         bst.insert(new KVPair<>(10, "Ten"));
@@ -158,7 +214,12 @@ public class BSTTest extends TestCase {
     }
 
 
-    public void testFindRangeWithConsoleOutput() {
+    // ----------------------------------------------------------
+    /**
+     * Test FindRangeWithConsoleOutput().
+     */
+    public void testFindRangeWithConsoleOutput()
+    {
         bst.insert(new KVPair<>(10, "Ten"));
         bst.insert(new KVPair<>(5, "Five"));
         bst.insert(new KVPair<>(3, "Three"));
@@ -177,7 +238,12 @@ public class BSTTest extends TestCase {
     }
 
 
-    public void testPrintTreeEmpty() {
+    // ----------------------------------------------------------
+    /**
+     * Test PrintTreeEmpty().
+     */
+    public void testPrintTreeEmpty()
+    {
         BST<Integer, String> emptyBST = new BST<>();
 
         emptyBST.printTree();
@@ -188,7 +254,12 @@ public class BSTTest extends TestCase {
     }
 
 
-    public void testPrintTree() {
+    // ----------------------------------------------------------
+    /**
+     * Test PrintTree().
+     */
+    public void testPrintTree()
+    {
         bst.insert(new KVPair<>(10, "Ten"));
         bst.insert(new KVPair<>(5, "Five"));
         bst.insert(new KVPair<>(3, "Three"));
@@ -210,7 +281,12 @@ public class BSTTest extends TestCase {
     }
 
 
-    public void testGetHeight() {
+    // ----------------------------------------------------------
+    /**
+     * Test GetHeight().
+     */
+    public void testGetHeight()
+    {
         bst.insert(new KVPair<>(1, "One"));
         bst.insert(new KVPair<>(2, "Two"));
         bst.insert(new KVPair<>(10, "Three"));
@@ -220,17 +296,61 @@ public class BSTTest extends TestCase {
     }
 
 
-    public void testDelete() {
-        Seminar seminar1 = new Seminar(10, "Title1", "0610051600", 90, (short)1,
-            (short)1, 100, new String[] { "CS" }, "Description 1");
-        Seminar seminar2 = new Seminar(5, "Title2", "0610051600", 60, (short)2,
-            (short)2, 200, new String[] { "Math" }, "Description 2");
-        Seminar seminar3 = new Seminar(3, "Title3", "0610051600", 120, (short)3,
-            (short)3, 300, new String[] { "History" }, "Description 3");
-        Seminar seminar4 = new Seminar(7, "Title4", "0610051600", 150, (short)4,
-            (short)4, 400, new String[] { "Biology" }, "Description 4");
-        Seminar seminar5 = new Seminar(15, "Title5", "0610051600", 180,
-            (short)5, (short)5, 500, new String[] { "Chemistry" },
+    // ----------------------------------------------------------
+    /**
+     * Test Delete().
+     */
+    public void testDelete()
+    {
+        Seminar seminar1 = new Seminar(
+            10,
+            "Title1",
+            "0610051600",
+            90,
+            (short)1,
+            (short)1,
+            100,
+            new String[] { "CS" },
+            "Description 1");
+        Seminar seminar2 = new Seminar(
+            5,
+            "Title2",
+            "0610051600",
+            60,
+            (short)2,
+            (short)2,
+            200,
+            new String[] { "Math" },
+            "Description 2");
+        Seminar seminar3 = new Seminar(
+            3,
+            "Title3",
+            "0610051600",
+            120,
+            (short)3,
+            (short)3,
+            300,
+            new String[] { "History" },
+            "Description 3");
+        Seminar seminar4 = new Seminar(
+            7,
+            "Title4",
+            "0610051600",
+            150,
+            (short)4,
+            (short)4,
+            400,
+            new String[] { "Biology" },
+            "Description 4");
+        Seminar seminar5 = new Seminar(
+            15,
+            "Title5",
+            "0610051600",
+            180,
+            (short)5,
+            (short)5,
+            500,
+            new String[] { "Chemistry" },
             "Description 5");
 
         deletebst.insert(new KVPair<>(10, seminar1));
@@ -245,17 +365,61 @@ public class BSTTest extends TestCase {
     }
 
 
-    public void testDeleteRoot() {
-        Seminar seminar1 = new Seminar(10, "Title1", "0610051600", 90, (short)1,
-            (short)1, 100, new String[] { "CS" }, "Description 1");
-        Seminar seminar2 = new Seminar(5, "Title2", "0610051600", 60, (short)2,
-            (short)2, 200, new String[] { "Math" }, "Description 2");
-        Seminar seminar3 = new Seminar(3, "Title3", "0610051600", 120, (short)3,
-            (short)3, 300, new String[] { "History" }, "Description 3");
-        Seminar seminar4 = new Seminar(7, "Title4", "0610051600", 150, (short)4,
-            (short)4, 400, new String[] { "Biology" }, "Description 4");
-        Seminar seminar5 = new Seminar(15, "Title5", "0610051600", 180,
-            (short)5, (short)5, 500, new String[] { "Chemistry" },
+    // ----------------------------------------------------------
+    /**
+     * Test DeleteRoot().
+     */
+    public void testDeleteRoot()
+    {
+        Seminar seminar1 = new Seminar(
+            10,
+            "Title1",
+            "0610051600",
+            90,
+            (short)1,
+            (short)1,
+            100,
+            new String[] { "CS" },
+            "Description 1");
+        Seminar seminar2 = new Seminar(
+            5,
+            "Title2",
+            "0610051600",
+            60,
+            (short)2,
+            (short)2,
+            200,
+            new String[] { "Math" },
+            "Description 2");
+        Seminar seminar3 = new Seminar(
+            3,
+            "Title3",
+            "0610051600",
+            120,
+            (short)3,
+            (short)3,
+            300,
+            new String[] { "History" },
+            "Description 3");
+        Seminar seminar4 = new Seminar(
+            7,
+            "Title4",
+            "0610051600",
+            150,
+            (short)4,
+            (short)4,
+            400,
+            new String[] { "Biology" },
+            "Description 4");
+        Seminar seminar5 = new Seminar(
+            15,
+            "Title5",
+            "0610051600",
+            180,
+            (short)5,
+            (short)5,
+            500,
+            new String[] { "Chemistry" },
             "Description 5");
 
         deletebst.insert(new KVPair<>(10, seminar1));
@@ -270,11 +434,32 @@ public class BSTTest extends TestCase {
     }
 
 
-    public void testDeleteDifferentValue() {
-        Seminar seminar1 = new Seminar(10, "Title1", "0610051600", 90, (short)1,
-            (short)1, 100, new String[] { "CS" }, "Description 1");
-        Seminar seminar2 = new Seminar(5, "Title2", "0610051600", 60, (short)2,
-            (short)2, 200, new String[] { "Math" }, "Description 2");
+    // ----------------------------------------------------------
+    /**
+     * Test DeleteDifferentValue().
+     */
+    public void testDeleteDifferentValue()
+    {
+        Seminar seminar1 = new Seminar(
+            10,
+            "Title1",
+            "0610051600",
+            90,
+            (short)1,
+            (short)1,
+            100,
+            new String[] { "CS" },
+            "Description 1");
+        Seminar seminar2 = new Seminar(
+            5,
+            "Title2",
+            "0610051600",
+            60,
+            (short)2,
+            (short)2,
+            200,
+            new String[] { "Math" },
+            "Description 2");
 
         deletebst.insert(new KVPair<>(10, seminar1));
         deletebst.insert(new KVPair<>(5, seminar2));
@@ -285,19 +470,53 @@ public class BSTTest extends TestCase {
     }
 
 
-    public void testDeleteNullRootBST() {
+    // ----------------------------------------------------------
+    /**
+     * Test DeleteNullRootBST().
+     */
+    public void testDeleteNullRootBST()
+    {
         deletebst.remove(new KVPair<>(10, new Seminar()));
         assertEquals(0, deletebst.size());
     }
 
 
-    public void testDeleteThreeTimes() {
-        Seminar seminar1 = new Seminar(10, "Title1", "0610051600", 90, (short)1,
-            (short)1, 100, new String[] { "CS" }, "Description 1");
-        Seminar seminar2 = new Seminar(5, "Title2", "0610051600", 60, (short)2,
-            (short)2, 200, new String[] { "Math" }, "Description 2");
-        Seminar seminar3 = new Seminar(3, "Title3", "0610051600", 120, (short)3,
-            (short)3, 300, new String[] { "History" }, "Description 3");
+    // ----------------------------------------------------------
+    /**
+     * Test DeleteThreeTimes().
+     */
+    public void testDeleteThreeTimes()
+    {
+        Seminar seminar1 = new Seminar(
+            10,
+            "Title1",
+            "0610051600",
+            90,
+            (short)1,
+            (short)1,
+            100,
+            new String[] { "CS" },
+            "Description 1");
+        Seminar seminar2 = new Seminar(
+            5,
+            "Title2",
+            "0610051600",
+            60,
+            (short)2,
+            (short)2,
+            200,
+            new String[] { "Math" },
+            "Description 2");
+        Seminar seminar3 = new Seminar(
+            3,
+            "Title3",
+            "0610051600",
+            120,
+            (short)3,
+            (short)3,
+            300,
+            new String[] { "History" },
+            "Description 3");
 
         deletebst.insert(new KVPair<>(10, seminar1));
         deletebst.insert(new KVPair<>(5, seminar2));
@@ -313,9 +532,22 @@ public class BSTTest extends TestCase {
     }
 
 
-    public void testDeleteNonExistentNode() {
-        Seminar seminar1 = new Seminar(10, "Title1", "0610051600", 90, (short)1,
-            (short)1, 100, new String[] { "CS" }, "Description 1");
+    // ----------------------------------------------------------
+    /**
+     * Test DeleteNonExistentNode().
+     */
+    public void testDeleteNonExistentNode()
+    {
+        Seminar seminar1 = new Seminar(
+            10,
+            "Title1",
+            "0610051600",
+            90,
+            (short)1,
+            (short)1,
+            100,
+            new String[] { "CS" },
+            "Description 1");
 
         deletebst.insert(new KVPair<>(10, seminar1));
 
@@ -326,13 +558,41 @@ public class BSTTest extends TestCase {
     }
 
 
-    public void testDeleteRootWithTwoChildren() {
-        Seminar seminar1 = new Seminar(10, "Title1", "0610051600", 90, (short)1,
-            (short)1, 100, new String[] { "CS" }, "Description 1");
-        Seminar seminar2 = new Seminar(5, "Title2", "0610051600", 60, (short)2,
-            (short)2, 200, new String[] { "Math" }, "Description 2");
-        Seminar seminar3 = new Seminar(15, "Title3", "0610051600", 120,
-            (short)3, (short)3, 300, new String[] { "History" },
+    // ----------------------------------------------------------
+    /**
+     * Test DeleteRootWithTwoChildren().
+     */
+    public void testDeleteRootWithTwoChildren()
+    {
+        Seminar seminar1 = new Seminar(
+            10,
+            "Title1",
+            "0610051600",
+            90,
+            (short)1,
+            (short)1,
+            100,
+            new String[] { "CS" },
+            "Description 1");
+        Seminar seminar2 = new Seminar(
+            5,
+            "Title2",
+            "0610051600",
+            60,
+            (short)2,
+            (short)2,
+            200,
+            new String[] { "Math" },
+            "Description 2");
+        Seminar seminar3 = new Seminar(
+            15,
+            "Title3",
+            "0610051600",
+            120,
+            (short)3,
+            (short)3,
+            300,
+            new String[] { "History" },
             "Description 3");
 
         deletebst.insert(new KVPair<>(10, seminar1));
@@ -346,40 +606,87 @@ public class BSTTest extends TestCase {
         assertNotNull(deletebst.find(5));
         assertNotNull(deletebst.find(15));
     }
-    
-    public void testDeleteDuplicate() {
-        Seminar seminar1 = new Seminar(10, "Title1", "0610051600", 90, (short)1,
-            (short)1, 100, new String[] { "CS" }, "Description 1");
-        Seminar seminar2 = new Seminar(5, "Title2", "0610051600", 60, (short)2,
-            (short)2, 200, new String[] { "Math" }, "Description 2");
-        
+
+
+    // ----------------------------------------------------------
+    /**
+     * Test DeleteDuplicate().
+     */
+    public void testDeleteDuplicate()
+    {
+        Seminar seminar1 = new Seminar(
+            10,
+            "Title1",
+            "0610051600",
+            90,
+            (short)1,
+            (short)1,
+            100,
+            new String[] { "CS" },
+            "Description 1");
+        Seminar seminar2 = new Seminar(
+            5,
+            "Title2",
+            "0610051600",
+            60,
+            (short)2,
+            (short)2,
+            200,
+            new String[] { "Math" },
+            "Description 2");
+
         deletebst.insert(new KVPair<>(10, seminar1));
         deletebst.insert(new KVPair<>(10, seminar2));
         deletebst.remove(new KVPair<>(10, seminar1));
-        
+
         assertNotNull(deletebst.find(10));
         assertEquals(1, deletebst.size());
     }
-    
-    
-    
-    
-    
-    
-    public void testGetMax() {
-        Seminar seminar1 = new Seminar(10, "Title1", "0610051600", 90, (short)1,
-            (short)1, 100, new String[] { "CS" }, "Description 1");
-        Seminar seminar2 = new Seminar(5, "Title2", "0610051600", 60, (short)2,
-            (short)2, 200, new String[] { "Math" }, "Description 2");
-        Seminar seminar3 = new Seminar(15, "Title3", "0610051600", 120,
-            (short)3, (short)3, 300, new String[] { "History" },
+
+
+    // ----------------------------------------------------------
+    /**
+     * Test getMax().
+     */
+    public void testGetMax()
+    {
+        Seminar seminar1 = new Seminar(
+            10,
+            "Title1",
+            "0610051600",
+            90,
+            (short)1,
+            (short)1,
+            100,
+            new String[] { "CS" },
+            "Description 1");
+        Seminar seminar2 = new Seminar(
+            5,
+            "Title2",
+            "0610051600",
+            60,
+            (short)2,
+            (short)2,
+            200,
+            new String[] { "Math" },
+            "Description 2");
+        Seminar seminar3 = new Seminar(
+            15,
+            "Title3",
+            "0610051600",
+            120,
+            (short)3,
+            (short)3,
+            300,
+            new String[] { "History" },
             "Description 3");
 
         deletebst.insert(new KVPair<>(10, seminar1));
         deletebst.insert(new KVPair<>(5, seminar2));
         deletebst.insert(new KVPair<>(15, seminar3));
 
-        BST.BSTNode<Integer, Seminar> maxNode = deletebst.getMax(deletebst.root);
+        BST.BSTNode<Integer, Seminar> maxNode =
+            deletebst.getMax(deletebst.root);
         assertEquals(15, (int)maxNode.value().key());
     }
 

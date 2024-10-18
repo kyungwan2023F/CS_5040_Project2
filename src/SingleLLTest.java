@@ -6,7 +6,6 @@ import student.TestCase;
  * @author Kyungwan Do, Jaeyoung Shin
  * @version 10/18/2024
  */
-
 public class SingleLLTest
     extends TestCase
 {

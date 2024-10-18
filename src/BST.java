@@ -1,118 +1,219 @@
-public class BST<K extends Comparable<K>, E> {
-    // ~ Fields ................................................................
+/**
+ * The BST class implements a binary search tree that stores key-value pairs,
+ * supporting operations like insertion, deletion, searching, and printing the
+ * tree structure.
+ * 
+ * @author Kyungwan Do, Jaeyoung Shin
+ * @version 10/18/2024
+ * @param <K>
+ * @param <E>
+ */
+public class BST<K extends Comparable<K>, E>
+{
+    /**
+     * 
+     */
     public BST.BSTNode<K, E> root;
     private int nodecount;
 
-    static class BSTNode<K extends Comparable<K>, E> {
+    // -------------------------------------------------------------------------
+    /**
+     * Write a one-sentence summary of your class here. Follow it with
+     * additional details about its purpose, what abstraction it represents, and
+     * how to use it.
+     * 
+     * @param <K>
+     * @param <E>
+     */
+    static class BSTNode<K extends Comparable<K>, E>
+    {
+        /**
+         * data
+         */
         KVPair<K, E> data;
+        /**
+         * left and right node
+         */
         BSTNode<K, E> left, right;
 
-        BSTNode(KVPair<K, E> data) {
+        // ----------------------------------------------------------
+        /**
+         * Create a new BSTNode object.
+         * 
+         * @param data
+         */
+        BSTNode(KVPair<K, E> data)
+        {
             this.data = data;
             this.left = null;
             this.right = null;
         }
 
 
-        public BSTNode<K, E> left() {
+        // ----------------------------------------------------------
+        /**
+         * Return left.
+         * 
+         * @return left
+         */
+        public BSTNode<K, E> left()
+        {
             return left;
         }
 
 
-        public BSTNode<K, E> right() {
+        // ----------------------------------------------------------
+        /**
+         * Return right.
+         * 
+         * @return right
+         */
+        public BSTNode<K, E> right()
+        {
             return right;
         }
 
 
-        public KVPair<K, E> value() {
+        // ----------------------------------------------------------
+        /**
+         * Return value data.
+         * 
+         * @return data
+         */
+        public KVPair<K, E> value()
+        {
             return this.data;
         }
     }
 
-    // ~ Constructors ..........................................................
-    public BST() {
+    // ----------------------------------------------------------
+    /**
+     * Create a new BST object.
+     */
+    public BST()
+    {
         this.root = null;
         this.nodecount = 0;
     }
 
 
-    // ~Public Methods ........................................................
-    public int size() {
+    // ----------------------------------------------------------
+    /**
+     * Return size.
+     * 
+     * @return count
+     */
+    public int size()
+    {
         return nodecount;
     }
 
 
-    private KVPair<K, E> findHelp(BSTNode<K, E> root, K key) {
-        if (root == null) {
+    private KVPair<K, E> findHelp(BSTNode<K, E> root, K key)
+    {
+        if (root == null)
+        {
             return null;
         }
 
         int comparison = key.compareTo(root.value().key());
 
-        if (comparison > 0) {
+        if (comparison > 0)
+        {
             return findHelp(root.right, key);
         }
-        else if (comparison == 0) {
+        else if (comparison == 0)
+        {
             return root.value();
         }
-        else {
+        else
+        {
             return findHelp(root.left, key);
         }
     }
 
 
-    private int findRangeHelp(BSTNode<K, E> root, K min, K max) {
-        if (root == null) {
+    private int findRangeHelp(BSTNode<K, E> root, K min, K max)
+    {
+        if (root == null)
+        {
             return 1;
         }
 
         int nodesVisited = 1;
 
-        if (min.compareTo(root.value().key()) <= 0) {
+        if (min.compareTo(root.value().key()) <= 0)
+        {
             nodesVisited += findRangeHelp(root.left, min, max);
         }
 
-        if (min.compareTo(root.value().key()) <= 0 && max.compareTo(root.value()
-            .key()) >= 0) {
+        if (min.compareTo(root.value().key()) <= 0
+            && max.compareTo(root.value().key()) >= 0)
+        {
             System.out.println(root.value().value().toString());
         }
 
-        if (max.compareTo(root.value().key()) > 0) {
+        if (max.compareTo(root.value().key()) > 0)
+        {
             nodesVisited += findRangeHelp(root.right, min, max);
         }
         return nodesVisited;
     }
 
 
-    private BSTNode<K, E> insertHelp(
-        BSTNode<K, E> root,
-        KVPair<K, E> insertPair) {
-        if (root == null) {
+    private
+        BSTNode<K, E>
+        insertHelp(BSTNode<K, E> root, KVPair<K, E> insertPair)
+    {
+        if (root == null)
+        {
             return new BSTNode<>(insertPair);
         }
 
         int comparison = insertPair.compareTo(root.value());
 
-        if (comparison <= 0) {
+        if (comparison <= 0)
+        {
             root.left = insertHelp(root.left, insertPair);
         }
-        else {
+        else
+        {
             root.right = insertHelp(root.right, insertPair);
         }
         return root;
     }
 
 
-    public BSTNode<K, E> getMax(BSTNode<K, E> root) {
-        if (root.right == null) {
+    // ----------------------------------------------------------
+    /**
+     * Get max pair.
+     * 
+     * @param root
+     *            ke
+     * @return max
+     */
+    public BSTNode<K, E> getMax(BSTNode<K, E> root)
+    {
+        if (root.right == null)
+        {
             return root;
         }
         return getMax(root.right);
     }
 
 
-    public BSTNode<K, E> deleteMax(BSTNode<K, E> root) {
-        if (root.right == null) {
+    // ----------------------------------------------------------
+    /**
+     * Delete max pair.
+     * 
+     * @param root
+     *            ke
+     * @return root
+     */
+    public BSTNode<K, E> deleteMax(BSTNode<K, E> root)
+    {
+        if (root.right == null)
+        {
             return root.left;
         }
         root.right = deleteMax(root.right);
@@ -120,36 +221,46 @@ public class BST<K extends Comparable<K>, E> {
     }
 
 
-    private BSTNode<K, E> removeHelp(BSTNode<K, E> root, KVPair<K, E> key) {
-        if (root == null) {
+    private BSTNode<K, E> removeHelp(BSTNode<K, E> root, KVPair<K, E> key)
+    {
+        if (root == null)
+        {
             return null;
         }
         int comparison = root.value().compareTo(key);
-        if (comparison > 0) {
+        if (comparison > 0)
+        {
             root.left = removeHelp(root.left, key);
         }
-        else if (comparison < 0) {
+        else if (comparison < 0)
+        {
             root.right = removeHelp(root.right, key);
         }
-        else {
+        else
+        {
             Seminar rootSeminar = (Seminar)root.data.value();
             Seminar keySeminar = (Seminar)key.value();
 
-            if (rootSeminar.id() == keySeminar.id()) {
+            if (rootSeminar.id() == keySeminar.id())
+            {
                 nodecount--;
-                if (root.left == null) {
+                if (root.left == null)
+                {
                     return root.right;
                 }
-                else if (root.right == null) {
+                else if (root.right == null)
+                {
                     return root.left;
                 }
-                else {
+                else
+                {
                     BSTNode<K, E> temp = getMax(root.left);
                     root.data = temp.data;
                     root.left = deleteMax(root.left);
                 }
             }
-            else {
+            else
+            {
                 root.left = removeHelp(root.left, key);
             }
         }
@@ -157,30 +268,68 @@ public class BST<K extends Comparable<K>, E> {
     }
 
 
-    public void remove(KVPair<K, E> key) {
+    // ----------------------------------------------------------
+    /**
+     * remove key.
+     * 
+     * @param key
+     *            e
+     */
+    public void remove(KVPair<K, E> key)
+    {
         this.root = removeHelp(root, key);
-//        return removeHelp(root, key);
+// return removeHelp(root, key);
     }
 
 
-    public void insert(KVPair<K, E> pair) {
+    // ----------------------------------------------------------
+    /**
+     * Insert kv pair.
+     * 
+     * @param pair
+     *            ke
+     */
+    public void insert(KVPair<K, E> pair)
+    {
         root = insertHelp(root, pair);
         nodecount++;
     }
 
 
-    public KVPair<K, E> find(K key) {
+    // ----------------------------------------------------------
+    /**
+     * Find help.
+     * 
+     * @param key
+     *            k
+     * @return help
+     */
+    public KVPair<K, E> find(K key)
+    {
         return findHelp(root, key);
     }
 
 
-    public int findRange(K min, K max) {
+    // ----------------------------------------------------------
+    /**
+     * Find range.
+     * 
+     * @param min
+     *            k
+     * @param max
+     *            k
+     * @return range
+     */
+    public int findRange(K min, K max)
+    {
         return findRangeHelp(root, min, max);
     }
 
 
-    private int getHeight(BSTNode<K, E> node) {
-        if (node == null) {
+    private int getHeight(BSTNode<K, E> node)
+    {
+        if (node == null)
+        {
             return 0;
         }
         int leftHeight = getHeight(node.left);
@@ -189,13 +338,22 @@ public class BST<K extends Comparable<K>, E> {
     }
 
 
-    public int getHeight() {
+    // ----------------------------------------------------------
+    /**
+     * Return height.
+     * 
+     * @return height
+     */
+    public int getHeight()
+    {
         return getHeight(root);
     }
 
 
-    private void printTreeHelper(BSTNode<K, E> node, int height, int level) {
-        if (node == null) {
+    private void printTreeHelper(BSTNode<K, E> node, int height, int level)
+    {
+        if (node == null)
+        {
             int indentSpaces = (height - level) * 4;
             String indent = " ".repeat(indentSpaces);
             System.out.println(indent + "(null)");
@@ -215,11 +373,18 @@ public class BST<K extends Comparable<K>, E> {
     }
 
 
-    public void printTree() {
-        if (root == null) {
+    // ----------------------------------------------------------
+    /**
+     * Prints size.
+     */
+    public void printTree()
+    {
+        if (root == null)
+        {
             System.out.println("This tree is empty");
         }
-        else {
+        else
+        {
             int height = getHeight(root);
             printTreeHelper(root, height, 0);
             System.out.println("Number of records: " + this.size());

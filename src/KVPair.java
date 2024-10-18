@@ -1,34 +1,92 @@
+/**
+ * The KVPair class represents a key-value pair where the key is comparable,
+ * providing methods for comparing pairs or keys and retrieving the key and
+ * value.
+ * 
+ * @author Kyungwan Do, Jaeyoung Shin
+ * @version 10/18/2024
+ * @param <K>
+ *            e
+ * @param <E>
+ *            e
+ */
 public class KVPair<K extends Comparable<K>, E>
-    implements Comparable<KVPair<K, E>> {
+    implements Comparable<KVPair<K, E>>
+{
 
-    // ~ Fields ................................................................
+    /**
+     * key
+     */
     K theKey;
+    /**
+     * value
+     */
     E theVal;
 
-    // ~ Constructors ..........................................................
-    KVPair(K k, E v) {
+    // ----------------------------------------------------------
+    /**
+     * Create a new KVPair object.
+     * 
+     * @param k
+     *            k
+     * @param v
+     *            e
+     */
+    KVPair(K k, E v)
+    {
         theKey = k;
         theVal = v;
     }
 
 
-    // ~Public Methods ........................................................
-    public int compareTo(KVPair<K, E> it) {
+    // ----------------------------------------------------------
+    /**
+     * Compares this kv pair with another pair based on the key.
+     * 
+     * @param it
+     *            ke
+     * @return comparedKey
+     */
+    public int compareTo(KVPair<K, E> it)
+    {
         return theKey.compareTo(it.key());
     }
 
 
-    public int compareTo(K key) {
+    // ----------------------------------------------------------
+    /**
+     * Compares this kv pair's key with another key.
+     * 
+     * @param key
+     *            k
+     * @return comparedKey
+     */
+    public int compareTo(K key)
+    {
         return theKey.compareTo(key);
     }
 
 
-    public K key() {
+    // ----------------------------------------------------------
+    /**
+     * Returns the key of this kv pair.
+     * 
+     * @return key
+     */
+    public K key()
+    {
         return theKey;
     }
 
 
-    public E value() {
+    // ----------------------------------------------------------
+    /**
+     * Returns the value of this kv pair.
+     * 
+     * @return value
+     */
+    public E value()
+    {
         return theVal;
     }
 }

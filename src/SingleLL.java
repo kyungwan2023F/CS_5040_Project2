@@ -1,11 +1,25 @@
-public class SingleLL {
+/**
+ * The SingleLL class implements a singly linked list that stores Seminar
+ * objects, providing methods to add, remove, and retrieve seminars by their
+ * position in the list.
+ *
+ * @author Kyungwan Do, Jaeyoung Shin
+ * @version 10/18/2024
+ */
+public class SingleLL
+{
     // ~ Fields ................................................................
     private Node head;
 
     // the size of the linked list
     private int size;
 
-    public static class Node {
+    // -------------------------------------------------------------------------
+    /**
+     * public node class.
+     */
+    public static class Node
+    {
 
         // The Seminar object stored in the node.
         private Seminar seminar;
@@ -19,7 +33,8 @@ public class SingleLL {
          * @param seminar
          *            the seminar to put inside the node
          */
-        public Node(Seminar seminar) {
+        public Node(Seminar seminar)
+        {
             this.seminar = seminar;
         }
 
@@ -30,7 +45,8 @@ public class SingleLL {
          * @param n
          *            the node after this one
          */
-        public void setNext(Node n) {
+        public void setNext(Node n)
+        {
             next = n;
         }
 
@@ -40,7 +56,8 @@ public class SingleLL {
          *
          * @return the next node
          */
-        public Node next() {
+        public Node next()
+        {
             return next;
         }
 
@@ -50,7 +67,8 @@ public class SingleLL {
          *
          * @return the seminar in the node
          */
-        public Seminar getSeminar() {
+        public Seminar getSeminar()
+        {
             return seminar;
         }
     }
@@ -59,7 +77,8 @@ public class SingleLL {
     /**
      * Creates a new LinkedList object
      */
-    public SingleLL() {
+    public SingleLL()
+    {
         head = null;
         size = 0;
     }
@@ -72,7 +91,8 @@ public class SingleLL {
      * 
      * @return the number of elements in the list
      */
-    public int size() {
+    public int size()
+    {
         return size;
     }
 
@@ -86,9 +106,11 @@ public class SingleLL {
      * @throws IllegalArgumentException
      *             if seminar is null
      */
-    public void add(Seminar seminar) {
+    public void add(Seminar seminar)
+    {
         // check if the seminar is null
-        if (seminar == null) {
+        if (seminar == null)
+        {
             throw new IllegalArgumentException("Seminar is null");
         }
 
@@ -97,24 +119,29 @@ public class SingleLL {
         Node previous = null;
 
         // empty case
-        if (isEmpty()) {
+        if (isEmpty())
+        {
             head = new Node(seminar);
         }
 
         // other cases
-        else {
-            while (current != null && current.seminar.id() < seminar.id()) {
+        else
+        {
+            while (current != null && current.seminar.id() < seminar.id())
+            {
                 previous = current;
                 current = current.next;
             }
 
             // Case: insert at the head (new seminar has smallest id)
-            if (previous == null) {
+            if (previous == null)
+            {
                 newNode.setNext(head);
                 head = newNode;
             }
             // General case: insert between `previous` and `current`
-            else {
+            else
+            {
                 previous.setNext(newNode);
                 newNode.setNext(current);
             }
@@ -128,7 +155,8 @@ public class SingleLL {
      *
      * @return true if the list is empty
      */
-    public boolean isEmpty() {
+    public boolean isEmpty()
+    {
         return (size == 0);
     }
 
@@ -142,14 +170,17 @@ public class SingleLL {
      * @throws IndexOutOfBoundsException
      *             if the index is out of bounds.
      */
-    public boolean remove(int index) {
+    public boolean remove(int index)
+    {
         // if the index is invalid or the list is empty
-        if (index < 0 || index >= size) {
+        if (index < 0 || index >= size)
+        {
             throw new IndexOutOfBoundsException("Index is out of bounds");
         }
 
         // Case: Removing the head (first node)
-        if (index == 0) {
+        if (index == 0)
+        {
             head = head.next(); // Move head to the next node
             size--;
             return true;
@@ -161,14 +192,16 @@ public class SingleLL {
         int currentIndex = 0;
 
         // Traverse to the node just before the one we want to remove
-        while (current != null && currentIndex < index) {
+        while (current != null && currentIndex < index)
+        {
             previous = current;
             current = current.next();
             currentIndex++;
         }
 
         // Adjust the next pointer of the previous node to skip the removed node
-        if (previous != null && current != null) {
+        if (previous != null && current != null)
+        {
             previous.setNext(current.next()); // Bypass the current node
             size--;
             return true;
@@ -189,19 +222,23 @@ public class SingleLL {
      * @throws IndexOutOfBoundsException
      *             if no node at the given index
      */
-    public Seminar get(int index) {
+    public Seminar get(int index)
+    {
         Node current = head;
         int currentIndex = 0;
         Seminar seminar = null;
-        while (current != null) {
-            if (currentIndex == index) {
+        while (current != null)
+        {
+            if (currentIndex == index)
+            {
                 seminar = current.seminar;
             }
             currentIndex++;
             current = current.next;
         }
         // check if the seminar was null...
-        if (seminar == null) {
+        if (seminar == null)
+        {
             // ... if so throw an exception
             throw new IndexOutOfBoundsException("Index exceeds the size.");
         }
