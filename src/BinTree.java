@@ -37,7 +37,7 @@ public class BinTree {
 
     public void print() {
         System.out.println("Location Tree:");
-        if (this.getMaxDepth(root) == 0) {
+        if (root instanceof BinTreeEmptyNode) {
             System.out.println("E");
             return;
         }

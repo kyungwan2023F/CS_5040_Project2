@@ -125,18 +125,18 @@ public class BintreeInternalNode implements BintreeNode {
             int bottomRightX = midX;
             int topLeftY = y;
             int bottomRightY = y + height;
-            if ((topLeftX <= boundBottomRightX && bottomRightX >= boundTopLeftX)
-                && (topLeftY <= boundBottomRightY
-                    && bottomRightY >= boundTopLeftY)) {
+            if ((topLeftX < boundBottomRightX && bottomRightX > boundTopLeftX)
+                && (topLeftY < boundBottomRightY
+                    && bottomRightY > boundTopLeftY)) {
                 nodesVisited += left.search(boundX, boundY, x, y, height, width
                     / 2, boundHeight, boundWidth, depth + 1);
             }
             // RightSubTree
             topLeftX = midX;
             bottomRightX = x + width;
-            if ((topLeftX <= boundBottomRightX && bottomRightX >= boundTopLeftX)
-                && (topLeftY <= boundBottomRightY
-                    && bottomRightY >= boundTopLeftY)) {
+            if ((topLeftX < boundBottomRightX && bottomRightX > boundTopLeftX)
+                && (topLeftY < boundBottomRightY
+                    && bottomRightY > boundTopLeftY)) {
                 nodesVisited += right.search(boundX, boundY, midX, y, height,
                     width / 2, boundHeight, boundWidth, depth + 1);
             }
@@ -148,9 +148,9 @@ public class BintreeInternalNode implements BintreeNode {
             int bottomRightX = x + width;
             int topLeftY = y;
             int bottomRightY = midY;
-            if ((topLeftX <= boundBottomRightX && bottomRightX >= boundTopLeftX)
-                && (topLeftY <= boundBottomRightY
-                    && bottomRightY >= boundTopLeftY)) {
+            if ((topLeftX < boundBottomRightX && bottomRightX > boundTopLeftX)
+                && (topLeftY < boundBottomRightY
+                    && bottomRightY > boundTopLeftY)) {
                 nodesVisited += left.search(boundX, boundY, x, y, height / 2,
                     width, boundHeight, boundWidth, depth + 1);
             }
@@ -159,9 +159,9 @@ public class BintreeInternalNode implements BintreeNode {
             topLeftY = midY;
             bottomRightY = y + height;
 
-            if ((topLeftX <= boundBottomRightX && bottomRightX >= boundTopLeftX)
-                && (topLeftY <= boundBottomRightY
-                    && bottomRightY >= boundTopLeftY)) {
+            if ((topLeftX < boundBottomRightX && bottomRightX > boundTopLeftX)
+                && (topLeftY < boundBottomRightY
+                    && bottomRightY > boundTopLeftY)) {
                 nodesVisited += right.search(boundX, boundY, x, midY, height
                     / 2, width, boundHeight, boundWidth, depth + 1);
             }
