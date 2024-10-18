@@ -1,5 +1,12 @@
 import student.TestCase;
 
+/**
+ * Test case for SingleLL class.
+ *
+ * @author Kyungwan Do, Jaeyoung Shin
+ * @version 10/18/2024
+ */
+
 public class SingleLLTest
     extends TestCase
 {
@@ -50,7 +57,10 @@ public class SingleLLTest
     }
 
 
-    // ~Public Methods ........................................................
+    // ----------------------------------------------------------
+    /**
+     * Tests add().
+     */
     public void testAdd()
     {
         assertTrue(testList.isEmpty());
@@ -58,13 +68,13 @@ public class SingleLLTest
         assertFalse(testList.isEmpty());
         assertEquals(1, testList.size());
         assertEquals(testSeminar1, testList.get(0));
-        
+
         testList.add(testSeminar2);
         assertFalse(testList.isEmpty());
         assertEquals(2, testList.size());
         assertEquals(testSeminar1, testList.get(0));
         assertEquals(testSeminar2, testList.get(1));
-        
+
         testList.add(testSeminar3);
         assertFalse(testList.isEmpty());
         assertEquals(3, testList.size());
@@ -74,6 +84,10 @@ public class SingleLLTest
     }
 
 
+    // ----------------------------------------------------------
+    /**
+     * Tests add() null.
+     */
     public void testAddNull()
     {
         Exception exception = null;
@@ -89,31 +103,39 @@ public class SingleLLTest
     }
 
 
+    // ----------------------------------------------------------
+    /**
+     * Tests remove().
+     */
     public void testRemove()
     {
         testList.add(testSeminar1);
         testList.add(testSeminar2);
-        testList.add(testSeminar3); 
+        testList.add(testSeminar3);
         assertEquals(3, testList.size());
         assertEquals(testSeminar1, testList.get(0));
         assertEquals(testSeminar2, testList.get(1));
         assertEquals(testSeminar3, testList.get(2));
-        
+
         testList.remove(0);
         assertEquals(2, testList.size());
         assertEquals(testSeminar2, testList.get(0));
         assertEquals(testSeminar3, testList.get(1));
-        
+
         testList.remove(0);
         assertEquals(1, testList.size());
         assertEquals(testSeminar3, testList.get(0));
-        
+
         testList.remove(0);
         assertTrue(testList.isEmpty());
         assertEquals(0, testList.size());
     }
 
 
+    // ----------------------------------------------------------
+    /**
+     * Tests remove() invalid.
+     */
     public void testRemoveInvalid()
     {
         testList.add(testSeminar1);
@@ -123,7 +145,7 @@ public class SingleLLTest
         Exception exception = null;
         try
         {
-            testList.remove(-1); 
+            testList.remove(-1);
         }
         catch (IndexOutOfBoundsException e)
         {
@@ -135,7 +157,7 @@ public class SingleLLTest
         exception = null;
         try
         {
-            testList.remove(3); 
+            testList.remove(3);
         }
         catch (IndexOutOfBoundsException e)
         {
@@ -144,8 +166,14 @@ public class SingleLLTest
         assertNotNull(exception);
         assertEquals("Index is out of bounds", exception.getMessage());
     }
-    
-    public void testRemoveLast() {
+
+
+    // ----------------------------------------------------------
+    /**
+     * Tests remove() last.
+     */
+    public void testRemoveLast()
+    {
         testList.add(testSeminar1);
         testList.add(testSeminar2);
         testList.add(testSeminar3);
@@ -153,18 +181,27 @@ public class SingleLLTest
         assertEquals(2, testList.size());
         assertEquals(testSeminar1, testList.get(0));
         assertEquals(testSeminar2, testList.get(1));
-        
+
         Exception exception = null;
-        try {
-            testList.get(2); 
-        } catch (IndexOutOfBoundsException e) {
+        try
+        {
+            testList.get(2);
+        }
+        catch (IndexOutOfBoundsException e)
+        {
             exception = e;
         }
         assertNotNull(exception);
         assertEquals("Index exceeds the size.", exception.getMessage());
     }
-    
-    public void testRemoveFirst() {
+
+
+    // ----------------------------------------------------------
+    /**
+     * Tests remove() first.
+     */
+    public void testRemoveFirst()
+    {
         testList.add(testSeminar1);
         testList.add(testSeminar2);
         testList.add(testSeminar3);
@@ -175,8 +212,14 @@ public class SingleLLTest
         assertEquals(testSeminar2, testList.get(0));
         assertEquals(testSeminar3, testList.get(1));
     }
-    
-    public void testRemoveMiddle() {
+
+
+    // ----------------------------------------------------------
+    /**
+     * Tests remove() middle.
+     */
+    public void testRemoveMiddle()
+    {
         testList.add(testSeminar1);
         testList.add(testSeminar2);
         testList.add(testSeminar3);
@@ -189,6 +232,10 @@ public class SingleLLTest
     }
 
 
+    // ----------------------------------------------------------
+    /**
+     * Tests get().
+     */
     public void testGet()
     {
         testList.add(testSeminar3);
@@ -197,11 +244,14 @@ public class SingleLLTest
         assertEquals(testSeminar1, testList.get(0));
         assertEquals(testSeminar2, testList.get(1));
         assertEquals(testSeminar3, testList.get(2));
-        
+
         Exception exception = null;
-        try {
+        try
+        {
             testList.get(3);
-        } catch (IndexOutOfBoundsException e) {
+        }
+        catch (IndexOutOfBoundsException e)
+        {
             exception = e;
         }
         assertNotNull(exception);

@@ -1,12 +1,13 @@
 /**
- * Seminar class with getter methods for key fields. There is probably no
- * good reason why you would want to modify this class for your project.
+ * Seminar class with getter methods for key fields. There is probably no good
+ * reason why you would want to modify this class for your project.
  *
  * @author CS3114/CS5040 staff
  * @version July 2023, last updated September 2023
  */
 
-public class Seminar {
+public class Seminar
+{
     private String title; // Semianar title
     private String date; // Seminar date
     private int length; // Seminar length
@@ -21,25 +22,45 @@ public class Seminar {
     /**
      * Dummy seminar constructor
      */
-    public Seminar() {
+    public Seminar()
+    {
         // Nothing here
     }
+
 
     /**
      * Create a new Seminar object from the field data
      *
-     * @param tin    input title
-     * @param datein input date
-     * @param lin    input length
-     * @param kin    input keywords
-     * @param xin    input x coord
-     * @param yin    input y coord
-     * @param descin input description
-     * @param cin    input cost
-     * @param idin   input ID
+     * @param tin
+     *            input title
+     * @param datein
+     *            input date
+     * @param lin
+     *            input length
+     * @param kin
+     *            input keywords
+     * @param xin
+     *            input x coord
+     * @param yin
+     *            input y coord
+     * @param descin
+     *            input description
+     * @param cin
+     *            input cost
+     * @param idin
+     *            input ID
      */
-    public Seminar(int idin, String tin, String datein, int lin, short xin,
-        short yin, int cin, String[] kin, String descin) {
+    public Seminar(
+        int idin,
+        String tin,
+        String datein,
+        int lin,
+        short xin,
+        short yin,
+        int cin,
+        String[] kin,
+        String descin)
+    {
         id = idin;
         title = tin;
         date = datein;
@@ -55,18 +76,23 @@ public class Seminar {
     // ----------------------------------------------------------
     /**
      * Returns the seminar ID field
+     * 
      * @return the ID field for the seminar
      */
-    public int id() {
+    public int id()
+    {
         return id;
     }
-    
+
+
     // ----------------------------------------------------------
     /**
      * Returns the seminar ID field
+     * 
      * @return the ID field for the seminar
      */
-    public String title() {
+    public String title()
+    {
         return title;
     }
 
@@ -74,18 +100,23 @@ public class Seminar {
     // ----------------------------------------------------------
     /**
      * Return the seminar date
+     * 
      * @return the date field for the seminar
      */
-    public String date() {
+    public String date()
+    {
         return date;
     }
-    
+
+
     // ----------------------------------------------------------
     /**
      * Return the seminar date
+     * 
      * @return the date field for the seminar
      */
-    public int length() {
+    public int length()
+    {
         return length;
     }
 
@@ -93,9 +124,11 @@ public class Seminar {
     // ----------------------------------------------------------
     /**
      * Return the seminar date
+     * 
      * @return the date field for the seminar
      */
-    public int cost() {
+    public int cost()
+    {
         return cost;
     }
 
@@ -103,9 +136,11 @@ public class Seminar {
     // ----------------------------------------------------------
     /**
      * Return the seminar keywords
+     * 
      * @return the keywords field for the seminar
      */
-    public String[] keywords() {
+    public String[] keywords()
+    {
         return keywords;
     }
 
@@ -113,9 +148,11 @@ public class Seminar {
     // ----------------------------------------------------------
     /**
      * Return the seminar x coordinate
+     * 
      * @return the x coordinate field for the seminar
      */
-    public int x() {
+    public int x()
+    {
         return x;
     }
 
@@ -123,22 +160,37 @@ public class Seminar {
     // ----------------------------------------------------------
     /**
      * Return the seminar y coordinate
+     * 
      * @return the y coordinate field for the seminar
      */
-    public int y() {
+    public int y()
+    {
         return y;
     }
-    
+
+
     // ----------------------------------------------------------
     /**
      * Return the seminar date
+     * 
      * @return the date field for the seminar
      */
-    public String description() {
+    public String description()
+    {
         return desc;
     }
-    
-    public boolean equals(Seminar otherSeminar) {
+
+
+    // ----------------------------------------------------------
+    /**
+     * Returns id.
+     * 
+     * @param otherSeminar
+     *            seminar
+     * @return id
+     */
+    public boolean equals(Seminar otherSeminar)
+    {
         return this.id == otherSeminar.id;
     }
 
@@ -146,16 +198,18 @@ public class Seminar {
     /**
      * @return a string representation of the object.
      */
-    public String toString() {
+    public String toString()
+    {
         int i;
         String mykeys = "";
-        for (i = 0; i < keywords.length; i++) {
+        for (i = 0; i < keywords.length; i++)
+        {
             mykeys += keywords[i];
             if (i != keywords.length - 1)
                 mykeys += ", ";
         }
-        return "ID: " + id + ", Title: " + title + "\nDate: " + date +
-            ", Length: " + length + ", X: " + x + ", Y: " + y + ", Cost: " +
-            cost + "\nDescription: " + desc + "\nKeywords: " + mykeys;
+        return "ID: " + id + ", Title: " + title + "\nDate: " + date
+            + ", Length: " + length + ", X: " + x + ", Y: " + y + ", Cost: "
+            + cost + "\nDescription: " + desc + "\nKeywords: " + mykeys;
     }
 }

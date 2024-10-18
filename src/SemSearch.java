@@ -1,14 +1,10 @@
 import java.io.File;
 
 /**
- * {Project Description Here}
- */
-
-/**
  * The class containing the main method.
  *
- * @author {Your Name Here}
- * @version {Put Something Here}
+ * @author Kyungwan Do, Jaeyoung Shin
+ * @version 10/18/2024
  */
 
 // On my honor:
@@ -30,15 +26,17 @@ import java.io.File;
 // during the discussion. I have violated neither the spirit nor
 // letter of this restriction.
 
-public class SemSearch {
+public class SemSearch
+{
     /**
      * @param args
      *            Command line parameters
      */
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         // This is the main file for the program.
         Seminar dum = new Seminar();
-        
+
         int worldSize = Integer.parseInt(args[0]);
 
         Controller controller = new Controller(worldSize);
