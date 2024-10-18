@@ -1,14 +1,35 @@
-// -------------------------------------------------------------------------
 /**
- * Write a one-sentence summary of your class here.
- * Follow it with additional details about its purpose, what abstraction
- * it represents, and how to use it.
+ * The BintreeNode interface defines the core operations that can be performed
+ * on nodes within a binary tree structure. This includes the insertion,
+ * deletion, search, and printing of nodes, where each node stores seminar data.
  * 
- * @author kyung
- * @version Oct 13, 2024
+ * @author Kyungwan Do, Jaeyoung Shin
+ * @version 10/18/2024
  */
-public interface BintreeNode {
-    
+public interface BintreeNode
+{
+    // ----------------------------------------------------------
+    /**
+     * Insert seminar.
+     * 
+     * @param x
+     *            int
+     * @param y
+     *            int
+     * @param minx
+     *            int
+     * @param miny
+     *            int
+     * @param maxx
+     *            int
+     * @param maxy
+     *            int
+     * @param seminar
+     *            seminar
+     * @param depth
+     *            int
+     * @return updated node
+     */
     public BintreeNode insert(
         int x,
         int y,
@@ -20,6 +41,28 @@ public interface BintreeNode {
         int depth);
 
 
+    // ----------------------------------------------------------
+    /**
+     * Delete seminar.
+     * 
+     * @param x
+     *            int
+     * @param y
+     *            int
+     * @param id
+     *            int
+     * @param minx
+     *            int
+     * @param miny
+     *            int
+     * @param maxx
+     *            int
+     * @param maxy
+     *            int
+     * @param depth
+     *            int
+     * @return updated node
+     */
     public BintreeNode delete(
         int x,
         int y,
@@ -27,9 +70,34 @@ public interface BintreeNode {
         int minx,
         int miny,
         int maxx,
-        int maxy, int depth);
+        int maxy,
+        int depth);
 
 
+    // ----------------------------------------------------------
+    /**
+     * Search seminar.
+     * 
+     * @param boundX
+     *            int
+     * @param boundY
+     *            int
+     * @param x
+     *            int
+     * @param y
+     *            int
+     * @param height
+     *            int
+     * @param width
+     *            int
+     * @param boundHeight
+     *            int
+     * @param boundWidth
+     *            int
+     * @param depth
+     *            int
+     * @return searched node
+     */
     public int search(
         int boundX,
         int boundY,
@@ -42,5 +110,14 @@ public interface BintreeNode {
         int depth);
 
 
+    // ----------------------------------------------------------
+    /**
+     * Print seminar.
+     * 
+     * @param currentLevel
+     *            int
+     * @param maxDepth
+     *            int
+     */
     public void print(int currentLevel, int maxDepth);
 }

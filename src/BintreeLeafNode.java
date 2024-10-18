@@ -1,7 +1,25 @@
-public class BintreeLeafNode implements BintreeNode {
+/**
+ * The BintreeLeafNode class represents a leaf node in a binary tree that stores
+ * a list of seminars and handles insertion, deletion, search, and printing of
+ * seminar data for nodes with the same coordinates.
+ * 
+ * @author Kyungwan Do, Jaeyoung Shin
+ * @version 10/18/2024
+ */
+public class BintreeLeafNode
+    implements BintreeNode
+{
     private SingleLL list;
 
-    public BintreeLeafNode(Seminar seminar) {
+    // ----------------------------------------------------------
+    /**
+     * Create a new BintreeLeafNode object.
+     * 
+     * @param seminar
+     *            seminar
+     */
+    public BintreeLeafNode(Seminar seminar)
+    {
         list = new SingleLL();
         list.add(seminar);
     }
@@ -16,17 +34,28 @@ public class BintreeLeafNode implements BintreeNode {
         int maxx,
         int maxy,
         Seminar seminar,
-        int depth) {
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).x() == x && list.get(i).y() == y) {
+        int depth)
+    {
+        for (int i = 0; i < list.size(); i++)
+        {
+            if (list.get(i).x() == x && list.get(i).y() == y)
+            {
                 list.add(seminar);
                 return this;
             }
         }
         BintreeInternalNode newInternalNode = new BintreeInternalNode();
-        for (int i = 0; i < list.size(); i++) {
-            newInternalNode.insert(list.get(i).x(), list.get(i).y(), minx, miny,
-                maxx, maxy, list.get(i), depth);
+        for (int i = 0; i < list.size(); i++)
+        {
+            newInternalNode.insert(
+                list.get(i).x(),
+                list.get(i).y(),
+                minx,
+                miny,
+                maxx,
+                maxy,
+                list.get(i),
+                depth);
         }
         newInternalNode.insert(x, y, minx, miny, maxx, maxy, seminar, depth);
         return newInternalNode;
@@ -42,14 +71,18 @@ public class BintreeLeafNode implements BintreeNode {
         int miny,
         int maxx,
         int maxy,
-        int depth) {
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).id() == id) {
+        int depth)
+    {
+        for (int i = 0; i < list.size(); i++)
+        {
+            if (list.get(i).id() == id)
+            {
                 list.remove(i);
                 break;
             }
         }
-        if (list.size() == 0) {
+        if (list.size() == 0)
+        {
             return new BinTreeEmptyNode();
         }
         return this;
@@ -66,7 +99,8 @@ public class BintreeLeafNode implements BintreeNode {
         int width,
         int boundHeight,
         int boundWidth,
-        int depth) {
+        int depth)
+    {
         int nodesVisited = 1;
         int radius = (boundWidth - 1) / 2;
         int radiusSquared = radius * radius;
@@ -76,13 +110,16 @@ public class BintreeLeafNode implements BintreeNode {
         int dy = realY - this.list.get(0).y();
         int distanceSquared = (dx * dx) + (dy * dy);
 
-        if (distanceSquared <= radiusSquared) {
-            for (int i = 0; i < this.list.size(); i++) {
+        if (distanceSquared <= radiusSquared)
+        {
+            for (int i = 0; i < this.list.size(); i++)
+            {
                 int id = this.list.get(i).id();
                 int leafX = this.list.get(0).x();
                 int leafY = this.list.get(0).y();
-                System.out.println("Found a record with key value " + id
-                    + " at " + leafX + ", " + leafY);
+                System.out.println(
+                    "Found a record with key value " + id + " at " + leafX
+                        + ", " + leafY);
             }
         }
         return nodesVisited;
@@ -91,14 +128,17 @@ public class BintreeLeafNode implements BintreeNode {
 
 
     @Override
-    public void print(int currentLevel, int maxDepth) {
+    public void print(int currentLevel, int maxDepth)
+    {
         int indentSpaces = (maxDepth - currentLevel) * 4;
         String indent = " ".repeat(indentSpaces);
 
         System.out.print(indent + "(Leaf with " + list.size() + " objects: ");
-        for (int i = 0; i < list.size(); i++) {
+        for (int i = 0; i < list.size(); i++)
+        {
             System.out.print(list.get(i).id());
-            if (i < list.size() - 1) {
+            if (i < list.size() - 1)
+            {
                 System.out.print(" ");
             }
         }
