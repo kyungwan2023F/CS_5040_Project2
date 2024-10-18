@@ -85,9 +85,8 @@ public class BintreeInternalNode implements BintreeNode {
             && left instanceof BintreeLeafNode) {
             return left; // Merge up 
         }
-
         // If both children empty, return empty node
-        if (left instanceof BinTreeEmptyNode
+        else if (left instanceof BinTreeEmptyNode
             && right instanceof BinTreeEmptyNode) {
             return new BinTreeEmptyNode();
         }
