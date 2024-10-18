@@ -1,7 +1,7 @@
 /**
- * The KVPair class represents a key-value pair where the key is comparable,
- * providing methods for comparing pairs or keys and retrieving the key and
- * value.
+ * The KVPair class represents a key-value pair where the key is comparable, and
+ * seminar the value. Uses comparable to allow comparison between two KVpair 
+ * objects.
  * 
  * @author Kyungwan Do, Jaeyoung Shin
  * @version 10/18/2024
@@ -11,8 +11,7 @@
  *            e
  */
 public class KVPair<K extends Comparable<K>, E>
-    implements Comparable<KVPair<K, E>>
-{
+    implements Comparable<KVPair<K, E>> {
 
     /**
      * key
@@ -32,8 +31,7 @@ public class KVPair<K extends Comparable<K>, E>
      * @param v
      *            e
      */
-    KVPair(K k, E v)
-    {
+    KVPair(K k, E v) {
         theKey = k;
         theVal = v;
     }
@@ -47,8 +45,7 @@ public class KVPair<K extends Comparable<K>, E>
      *            ke
      * @return comparedKey
      */
-    public int compareTo(KVPair<K, E> it)
-    {
+    public int compareTo(KVPair<K, E> it) {
         return theKey.compareTo(it.key());
     }
 
@@ -61,8 +58,7 @@ public class KVPair<K extends Comparable<K>, E>
      *            k
      * @return comparedKey
      */
-    public int compareTo(K key)
-    {
+    public int compareTo(K key) {
         return theKey.compareTo(key);
     }
 
@@ -73,8 +69,7 @@ public class KVPair<K extends Comparable<K>, E>
      * 
      * @return key
      */
-    public K key()
-    {
+    public K key() {
         return theKey;
     }
 
@@ -85,8 +80,7 @@ public class KVPair<K extends Comparable<K>, E>
      * 
      * @return value
      */
-    public E value()
-    {
+    public E value() {
         return theVal;
     }
 }

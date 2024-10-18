@@ -1,8 +1,7 @@
 /**
  * The BinTreeEmptyNode class represents an empty node in a binary tree, acting
  * as a placeholder for unoccupied space and managing operations such as
- * insertion, deletion, searching, and printing, returning appropriate defaults
- * for each.
+ * insertion, deletion, searching, and printing.
  * 
  * @author Kyungwan Do, Jaeyoung Shin
  * @version 10/18/2024

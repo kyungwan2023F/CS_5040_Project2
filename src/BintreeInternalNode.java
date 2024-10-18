@@ -1,6 +1,6 @@
 /**
- * The BintreeInternalNode class represents an internal node in a binary tree,
- * managing spatial data insertion, deletion, searching, and printing for
+ * The BintreeInternalNode class represents an internal node in a binary tree and
+ * manage coordinate data insertion, deletion, searching, and printing for
  * subdividing space between left and right child nodes.
  * 
  * @author Kyungwan Do, Jaeyoung Shin

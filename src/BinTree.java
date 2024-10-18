@@ -1,8 +1,8 @@
 /**
- * The BinTree class represents a spatial binary tree that manages the
+ * The BinTree class represents a binary tree that manages the
  * insertion, deletion, searching, and printing of seminar nodes. The tree uses
- * internal and leaf nodes to handle seminar data based on their spatial
- * coordinates, allowing efficient range searches within a bounded area.
+ * internal and leaf nodes to handle seminar data based on their
+ * coordinates, allowing range searches within a bounded area.
  * 
  * @author Kyungwan Do, Jaeyoung Shin
  * @version 10/18/2024
