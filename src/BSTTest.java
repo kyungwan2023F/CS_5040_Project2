@@ -360,5 +360,27 @@ public class BSTTest extends TestCase {
         assertNotNull(deletebst.find(10));
         assertEquals(1, deletebst.size());
     }
+    
+    
+    
+    
+    
+    
+    public void testGetMax() {
+        Seminar seminar1 = new Seminar(10, "Title1", "0610051600", 90, (short)1,
+            (short)1, 100, new String[] { "CS" }, "Description 1");
+        Seminar seminar2 = new Seminar(5, "Title2", "0610051600", 60, (short)2,
+            (short)2, 200, new String[] { "Math" }, "Description 2");
+        Seminar seminar3 = new Seminar(15, "Title3", "0610051600", 120,
+            (short)3, (short)3, 300, new String[] { "History" },
+            "Description 3");
+
+        deletebst.insert(new KVPair<>(10, seminar1));
+        deletebst.insert(new KVPair<>(5, seminar2));
+        deletebst.insert(new KVPair<>(15, seminar3));
+
+        BST.BSTNode<Integer, Seminar> maxNode = deletebst.getMax(deletebst.root);
+        assertEquals(15, (int)maxNode.value().key());
+    }
 
 }

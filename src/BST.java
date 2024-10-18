@@ -103,7 +103,7 @@ public class BST<K extends Comparable<K>, E> {
     }
 
 
-    private BSTNode<K, E> getMax(BSTNode<K, E> root) {
+    public BSTNode<K, E> getMax(BSTNode<K, E> root) {
         if (root.right == null) {
             return root;
         }
@@ -111,7 +111,7 @@ public class BST<K extends Comparable<K>, E> {
     }
 
 
-    private BSTNode<K, E> deleteMax(BSTNode<K, E> root) {
+    public BSTNode<K, E> deleteMax(BSTNode<K, E> root) {
         if (root.right == null) {
             return root.left;
         }
