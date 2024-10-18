@@ -7,8 +7,8 @@ public class BinTree {
     // ~ Constructors ..........................................................
     public BinTree(int maxX, int maxY) {
         this.root = new BinTreeEmptyNode();
-        this.maxX = maxX;
-        this.maxY = maxY;
+        this.maxX = maxX - 1;
+        this.maxY = maxY - 1;
     }
 
 
