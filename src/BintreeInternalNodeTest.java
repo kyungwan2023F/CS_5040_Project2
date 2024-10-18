@@ -59,6 +59,7 @@ public class BintreeInternalNodeTest extends TestCase {
         internalNode.insert(3, 3, 0, 0, 10, 10, seminar2, 0);
         internalNode.insert(8, 8, 0, 0, 10, 10, seminar3, 0);
         internalNode.insert(6, 7, 0, 0, 10, 10, seminar4, 0);
+        
         assertTrue(internalNode.left instanceof BintreeLeafNode);
         assertTrue(internalNode.right instanceof BintreeInternalNode);
     }
