@@ -1,4 +1,3 @@
-
 /**
  * The BinTree class represents a spatial binary tree that manages the
  * insertion, deletion, searching, and printing of seminar nodes. The tree uses
